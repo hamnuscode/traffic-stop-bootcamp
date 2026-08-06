@@ -1,0 +1,1022 @@
+/* ==========================================================================
+   Traffic Stop Bootcamp — Journey 2 Justice Learning LLC
+   Single stylesheet. No build step, no framework.
+
+   Structure:
+     1. Tokens          — colours, type, spacing (edit here first)
+     2. Reset & base
+     3. Typography
+     4. Layout helpers
+     5. Components      — buttons, forms, cards, tick rule
+     6. Header & footer
+     7. Page sections
+     8. Motion & responsive
+   ========================================================================== */
+
+
+/* 1. TOKENS ================================================================ */
+
+:root {
+  /* Palette — drawn from roadway signage: guide-sign green, reflective
+     sheeting, hazard amber. Change these six values to re-skin the site. */
+  --ink:          #0E1C24;   /* deepest text + dark bands */
+  --ink-soft:     #3C4E57;   /* secondary text */
+  --ink-faint:    #6B7C84;   /* captions, meta */
+
+  --sign:         #0B5B45;   /* brand anchor — guide-sign green */
+  --sign-deep:    #073E30;   /* pressed / hover state */
+  --sign-tint:    #E4EDE8;   /* pale wash behind quiet blocks */
+
+  --hazard:       #E6A93B;   /* hazard amber — ticks + focus only */
+  --hazard-deep:  #C98A1C;
+
+  --sheeting:     #EDF1EE;   /* page ground — pale reflective sheeting */
+  --mist:         #D6DDD8;   /* hairlines and borders */
+  --white:        #FFFFFF;
+
+  /* Type */
+  --display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --body:    "Source Serif 4", Georgia, "Times New Roman", serif;
+  --mono:    "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* Scale — fluid, clamps at both ends so nothing breaks on small phones */
+  --step--1: clamp(0.82rem, 0.79rem + 0.14vw, 0.9rem);
+  --step-0:  clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+  --step-1:  clamp(1.2rem, 1.12rem + 0.4vw, 1.45rem);
+  --step-2:  clamp(1.5rem, 1.34rem + 0.8vw, 2rem);
+  --step-3:  clamp(1.95rem, 1.65rem + 1.5vw, 2.9rem);
+  --step-4:  clamp(2.5rem, 1.9rem + 2.9vw, 4.4rem);
+
+  /* Rhythm */
+  --gutter:  clamp(1.25rem, 4vw, 3rem);
+  --measure: 68ch;
+  --shell:   1220px;
+  --radius:  4px;         /* signage corners are tight, not pill-shaped */
+
+  --shadow-card: 0 1px 2px rgba(14, 28, 36, 0.05),
+                 0 12px 32px -18px rgba(14, 28, 36, 0.35);
+}
+
+
+/* 2. RESET & BASE ========================================================== */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+}
+
+body {
+  margin: 0;
+  background: var(--sheeting);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: var(--step-0);
+  line-height: 1.62;
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, svg, video, iframe { display: block; max-width: 100%; }
+img, video { height: auto; }
+
+/* Visible keyboard focus everywhere — amber reads clearly on both grounds. */
+:focus-visible {
+  outline: 3px solid var(--hazard);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+::selection { background: var(--hazard); color: var(--ink); }
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+.skip-link {
+  position: absolute; left: 50%; top: 0;
+  transform: translate(-50%, -120%);
+  z-index: 200;
+  background: var(--ink); color: var(--white);
+  padding: 0.7rem 1.2rem;
+  font-family: var(--display); font-size: var(--step--1);
+  text-decoration: none;
+}
+.skip-link:focus { transform: translate(-50%, 0); }
+
+
+/* 3. TYPOGRAPHY ============================================================ */
+
+h1, h2, h3, h4 {
+  font-family: var(--display);
+  font-weight: 700;
+  font-stretch: 112%;              /* Archivo's width axis — signage breadth */
+  line-height: 1.05;
+  letter-spacing: -0.018em;
+  margin: 0;
+  text-wrap: balance;
+}
+
+h1 { font-size: var(--step-4); font-stretch: 118%; }
+h2 { font-size: var(--step-3); }
+h3 { font-size: var(--step-1); font-stretch: 106%; letter-spacing: -0.01em; }
+
+p { margin: 0 0 1.05em; max-width: var(--measure); }
+p:last-child { margin-bottom: 0; }
+
+a { color: var(--sign); text-underline-offset: 0.18em; }
+a:hover { color: var(--sign-deep); }
+
+strong { font-weight: 650; }
+
+/* Eyebrow — the small uppercase label that names a section's job. */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--sign);
+  margin: 0 0 1.1rem;
+}
+.eyebrow::before {
+  content: "";
+  width: 1.6rem; height: 2px;
+  background: var(--hazard);
+  flex: none;
+}
+.eyebrow--light { color: rgba(255, 255, 255, 0.72); }
+
+.lede {
+  font-size: var(--step-1);
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+.meta {
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+
+/* 4. LAYOUT ================================================================ */
+
+.shell {
+  width: min(100% - (var(--gutter) * 2), var(--shell));
+  margin-inline: auto;
+}
+
+.section { padding-block: clamp(3.5rem, 8vw, 6.5rem); }
+.section--tight { padding-block: clamp(2.5rem, 5vw, 4rem); }
+
+.section--dark {
+  background: var(--ink);
+  color: var(--white);
+}
+.section--dark h2, .section--dark h3 { color: var(--white); }
+.section--dark p { color: rgba(255, 255, 255, 0.76); }
+.section--dark a { color: var(--hazard); }
+
+.section--tint { background: var(--sign-tint); }
+
+.section__head { max-width: 56ch; margin-bottom: clamp(2rem, 4vw, 3.25rem); }
+
+
+/* 5. COMPONENTS ============================================================ */
+
+/* --- Tick rule ------------------------------------------------------------
+   The site's recurring motif: a measured strip of marks, like the ticks on a
+   mile marker. Used under the header, above dark bands, and beside modules. */
+.tick-rule {
+  height: 6px;
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--hazard) 0 2px,
+    transparent 2px 14px
+  );
+  opacity: 0.85;
+}
+.tick-rule--dense {
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--sign) 0 2px,
+    transparent 2px 9px
+  );
+}
+
+/* --- Buttons ------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  font-family: var(--display);
+  font-size: var(--step--1);
+  font-weight: 650;
+  font-stretch: 106%;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.95rem 1.6rem;
+  border: 2px solid transparent;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background-color 0.18s ease, color 0.18s ease,
+              border-color 0.18s ease, transform 0.18s ease;
+}
+.btn:active { transform: translateY(1px); }
+
+.btn--primary {
+  background: var(--sign);
+  color: var(--white);
+  border-color: var(--sign);
+}
+.btn--primary:hover { background: var(--sign-deep); border-color: var(--sign-deep); color: var(--white); }
+
+.btn--ghost {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--mist);
+}
+.btn--ghost:hover { border-color: var(--sign); color: var(--sign); }
+
+.btn--onDark {
+  background: transparent;
+  color: var(--white);
+  border-color: rgba(255, 255, 255, 0.32);
+}
+.btn--onDark:hover { border-color: var(--hazard); color: var(--hazard); }
+
+.btn--block { width: 100%; }
+
+/* --- Forms --------------------------------------------------------------- */
+.field { margin-bottom: 1rem; }
+
+.field label {
+  display: block;
+  font-family: var(--display);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 0.4rem;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  font-family: var(--body);
+  font-size: 1rem;
+  color: var(--ink);
+  background: var(--white);
+  border: 1px solid var(--mist);
+  border-radius: var(--radius);
+  padding: 0.72rem 0.85rem;
+  transition: border-color 0.16s ease, box-shadow 0.16s ease;
+}
+.field textarea { min-height: 9.5rem; resize: vertical; line-height: 1.55; }
+
+.field input:hover,
+.field select:hover,
+.field textarea:hover { border-color: #B8C4BC; }
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--sign);
+  box-shadow: 0 0 0 3px rgba(11, 91, 69, 0.14);
+}
+
+.field select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%233C4E57' stroke-width='1.6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.9rem center;
+  padding-right: 2.4rem;
+}
+
+.form-note {
+  font-size: var(--step--1);
+  color: var(--ink-faint);
+  margin-top: 0.9rem;
+}
+
+/* Honeypot — kept out of view but not hidden from the form itself. */
+.hp { position: absolute; left: -9999px; opacity: 0; pointer-events: none; }
+
+.form-status {
+  display: none;
+  margin-top: 1rem;
+  padding: 0.85rem 1rem;
+  border-left: 3px solid var(--sign);
+  background: var(--sign-tint);
+  font-size: var(--step--1);
+  color: var(--ink);
+}
+.form-status[data-state="error"] { border-left-color: var(--hazard-deep); background: #FBF1DF; }
+.form-status[data-state="sending"] { border-left-color: var(--ink-faint); background: #E7EBE8; }
+.form-status.is-shown { display: block; }
+
+/* --- Cards --------------------------------------------------------------- */
+.card {
+  background: var(--white);
+  border: 1px solid var(--mist);
+  border-radius: var(--radius);
+  padding: clamp(1.3rem, 2.6vw, 1.9rem);
+}
+
+.grid { display: grid; gap: clamp(1rem, 2vw, 1.6rem); }
+.grid--3 { grid-template-columns: repeat(3, 1fr); }
+.grid--4 { grid-template-columns: repeat(4, 1fr); }
+
+/* --- Guide-sign frame -----------------------------------------------------
+   Highway signs carry a white keyline inset from the edge. Reused on the
+   logo mark and on the highlights video so the two read as one system. */
+.sign-frame {
+  position: relative;
+  background: var(--sign);
+  border-radius: 6px;
+  padding: 10px;
+}
+.sign-frame::after {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 1.5px solid rgba(255, 255, 255, 0.55);
+  border-radius: 3px;
+  pointer-events: none;
+}
+.sign-frame > * { border-radius: 2px; }
+
+
+/* 6. HEADER & FOOTER ======================================================= */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(237, 241, 238, 0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--mist);
+}
+.site-header .tick-rule { height: 3px; opacity: 0.55; }
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  min-height: 78px;
+  padding-block: 0.7rem;
+}
+
+/* Logo slot — swap the <img> inside for the client's file, nothing else. */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  text-decoration: none;
+  color: var(--ink);
+}
+.brand__mark { width: 44px; height: 44px; flex: none; }
+.brand__text { display: flex; flex-direction: column; line-height: 1.05; }
+.brand__name {
+  font-family: var(--display);
+  font-size: 1.02rem;
+  font-weight: 700;
+  font-stretch: 116%;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+}
+.brand__org {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-top: 0.22rem;
+}
+
+.nav { display: flex; align-items: center; gap: clamp(1rem, 2.4vw, 2rem); }
+
+.nav__link {
+  font-family: var(--display);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ink-soft);
+  padding-block: 0.35rem;
+  border-bottom: 2px solid transparent;
+  transition: color 0.16s ease, border-color 0.16s ease;
+}
+.nav__link:hover { color: var(--sign); }
+.nav__link[aria-current="page"] { color: var(--ink); border-bottom-color: var(--hazard); }
+
+.nav__lock { display: inline-flex; align-items: center; gap: 0.35rem; }
+.nav__lock svg { width: 11px; height: 11px; opacity: 0.6; }
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 1px solid var(--mist);
+  border-radius: var(--radius);
+  padding: 0.55rem 0.7rem;
+  cursor: pointer;
+  color: var(--ink);
+}
+.nav-toggle svg { width: 20px; height: 14px; }
+
+/* Footer */
+.site-footer {
+  background: var(--ink);
+  color: rgba(255, 255, 255, 0.72);
+  padding-block: clamp(2.5rem, 5vw, 3.5rem) 2rem;
+  font-size: var(--step--1);
+}
+.footer__grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  padding-bottom: 2.2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+.site-footer h4 {
+  font-size: 0.76rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: 0.9rem;
+  font-stretch: 104%;
+}
+.site-footer a { color: rgba(255, 255, 255, 0.82); text-decoration: none; }
+.site-footer a:hover { color: var(--hazard); }
+.site-footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; }
+.footer__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.8rem;
+  padding-top: 1.4rem;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.45);
+}
+.footer__brand-line { max-width: 42ch; color: rgba(255, 255, 255, 0.62); }
+
+
+/* 7. PAGE SECTIONS ========================================================= */
+
+/* --- Hero: catch line beside the lead form ------------------------------- */
+.hero { padding-block: clamp(3rem, 7vw, 5.5rem) clamp(2rem, 4vw, 3rem); }
+
+.hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: start;
+}
+
+.hero h1 { margin-bottom: 1.3rem; }
+.hero h1 em {
+  font-style: normal;
+  color: var(--sign);
+  /* A hazard-amber underscore beneath the phrase that names the program. */
+  box-shadow: inset 0 -0.14em 0 var(--hazard);
+}
+
+.hero__actions { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.8rem; }
+
+.hero__stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(1.2rem, 3vw, 2.4rem);
+  margin-top: 2.4rem;
+  padding-top: 1.6rem;
+  border-top: 1px solid var(--mist);
+}
+.hero__stat dt {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 0.3rem;
+}
+.hero__stat dd {
+  margin: 0;
+  font-family: var(--display);
+  font-size: var(--step-1);
+  font-weight: 700;
+  font-stretch: 108%;
+}
+
+/* Lead form card */
+.lead-card {
+  background: var(--white);
+  border: 1px solid var(--mist);
+  border-top: 4px solid var(--sign);
+  border-radius: var(--radius);
+  padding: clamp(1.4rem, 3vw, 2rem);
+  box-shadow: var(--shadow-card);
+}
+.lead-card h2 {
+  font-size: var(--step-1);
+  font-stretch: 106%;
+  margin-bottom: 0.4rem;
+}
+.lead-card > p { font-size: var(--step--1); color: var(--ink-soft); margin-bottom: 1.4rem; }
+
+/* --- Highlights video ---------------------------------------------------- */
+.video-band { background: var(--ink); }
+.video-band .shell { position: relative; }
+
+.video-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.2rem;
+  margin-bottom: 1.8rem;
+}
+.video-head h2 { font-size: var(--step-2); max-width: 20ch; }
+
+.video-shell { max-width: 940px; margin-inline: auto; }
+
+/* 16:9 well. A poster image + <video> drops straight in; so does an iframe. */
+.video-well {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: #0A1319;
+  overflow: hidden;
+}
+.video-well > video,
+.video-well > iframe,
+.video-well > img { width: 100%; height: 100%; object-fit: cover; border: 0; }
+
+/* Placeholder shown until the client's file is dropped in. */
+.video-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  text-align: center;
+  padding: 1.5rem;
+  background:
+    radial-gradient(120% 90% at 50% 0%, rgba(11, 91, 69, 0.5), transparent 70%),
+    #0A1319;
+  color: rgba(255, 255, 255, 0.75);
+}
+.video-placeholder__play {
+  width: 68px; height: 68px;
+  border-radius: 50%;
+  display: grid; place-items: center;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  color: var(--white);
+}
+.video-placeholder__play svg { width: 20px; height: 22px; margin-left: 3px; }
+.video-placeholder p {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.video-caption {
+  margin-top: 1rem;
+  font-size: var(--step--1);
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+  max-width: none;
+}
+
+/* --- Signature: anatomy of a stop ---------------------------------------- */
+.anatomy__track {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0;
+  margin-top: clamp(1.5rem, 3vw, 2.5rem);
+  border-top: 2px solid var(--ink);
+}
+
+.beat {
+  position: relative;
+  padding: 1.9rem 1.15rem 0.4rem 0;
+  border-right: 1px solid var(--mist);
+}
+.beat:last-child { border-right: 0; }
+
+/* The tick that anchors each beat to the rule above it. */
+.beat::before {
+  content: "";
+  position: absolute;
+  top: -2px; left: 0;
+  width: 2px; height: 15px;
+  background: var(--hazard);
+}
+.beat__time {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--sign);
+  margin-bottom: 0.45rem;
+}
+.beat__title {
+  font-family: var(--display);
+  font-size: var(--step-0);
+  font-weight: 700;
+  font-stretch: 104%;
+  letter-spacing: -0.005em;
+  line-height: 1.2;
+  margin: 0 0 0.4rem;
+}
+.beat__text {
+  font-size: var(--step--1);
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin: 0;
+  max-width: none;
+}
+
+/* --- Module preview (home) ----------------------------------------------- */
+.module-preview {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1.4rem 1.3rem;
+  background: var(--white);
+  border: 1px solid var(--mist);
+  border-radius: var(--radius);
+  transition: border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+}
+.module-preview:hover {
+  border-color: var(--sign);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card);
+}
+.module-preview__num {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--hazard-deep);
+  padding-top: 0.28rem;
+  flex: none;
+}
+.module-preview h3 { font-size: var(--step-0); margin-bottom: 0.35rem; }
+.module-preview p { font-size: var(--step--1); color: var(--ink-soft); margin: 0; max-width: none; }
+
+/* --- Audience list ------------------------------------------------------- */
+.audience {
+  display: grid;
+  gap: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+}
+.audience__row {
+  display: grid;
+  grid-template-columns: 3.5rem minmax(0, 15rem) minmax(0, 1fr);
+  gap: clamp(0.8rem, 2vw, 2rem);
+  align-items: baseline;
+  padding: 1.4rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+}
+.audience__idx {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--hazard);
+}
+.audience__name {
+  font-family: var(--display);
+  font-size: var(--step-1);
+  font-weight: 650;
+  font-stretch: 106%;
+  color: var(--white);
+  line-height: 1.15;
+}
+.audience__note { font-size: var(--step--1); color: rgba(255, 255, 255, 0.68); margin: 0; max-width: none; }
+
+/* --- Closing CTA --------------------------------------------------------- */
+.cta-band {
+  background: var(--sign);
+  color: var(--white);
+  border-radius: var(--radius);
+  padding: clamp(2rem, 5vw, 3.4rem);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: center;
+}
+.cta-band h2 { color: var(--white); font-size: var(--step-2); margin-bottom: 0.7rem; }
+.cta-band p { color: rgba(255, 255, 255, 0.82); margin: 0; }
+.cta-band .btn {
+  background: var(--white);
+  color: var(--sign-deep);
+  border-color: var(--white);
+  white-space: nowrap;
+}
+.cta-band .btn:hover { background: var(--hazard); border-color: var(--hazard); color: var(--ink); }
+
+
+/* --- Modules page: gate -------------------------------------------------- */
+.gate {
+  min-height: 74vh;
+  display: grid;
+  place-items: center;
+  padding-block: clamp(3rem, 8vw, 6rem);
+}
+.gate__card {
+  width: min(100%, 460px);
+  background: var(--white);
+  border: 1px solid var(--mist);
+  border-top: 4px solid var(--sign);
+  border-radius: var(--radius);
+  padding: clamp(1.6rem, 4vw, 2.4rem);
+  box-shadow: var(--shadow-card);
+  text-align: left;
+}
+.gate__lock {
+  width: 46px; height: 46px;
+  display: grid; place-items: center;
+  background: var(--sign-tint);
+  border-radius: 50%;
+  color: var(--sign);
+  margin-bottom: 1.2rem;
+}
+.gate__lock svg { width: 20px; height: 20px; }
+.gate__card h1 { font-size: var(--step-2); margin-bottom: 0.6rem; }
+.gate__card > p { font-size: var(--step--1); color: var(--ink-soft); margin-bottom: 1.5rem; }
+.gate__error {
+  display: none;
+  margin-top: 0.85rem;
+  font-size: var(--step--1);
+  color: #A33A21;
+}
+.gate__error.is-shown { display: block; }
+.gate__help {
+  margin-top: 1.4rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--mist);
+  font-size: var(--step--1);
+  color: var(--ink-faint);
+}
+
+/* Locked content stays out of the DOM flow until unlocked. */
+[hidden] { display: none !important; }
+
+/* Set by an inline script in modules.html so a returning, already-unlocked
+   visitor never sees the gate flash before the script runs. */
+html[data-gate="open"] .gate { display: none; }
+
+/* --- Modules page: one row per module ------------------------------------ */
+.module {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  align-items: center;
+  padding-block: clamp(2.2rem, 5vw, 3.6rem);
+  border-top: 1px solid var(--mist);
+}
+.module:first-of-type { border-top: 0; padding-top: clamp(1rem, 2vw, 1.5rem); }
+.module:nth-child(even) .module__body { order: -1; }
+
+.module__head {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+/* Module icon — swap the <svg> path for the client's chosen icon. */
+.module__icon {
+  width: 48px; height: 48px;
+  flex: none;
+  display: grid; place-items: center;
+  background: var(--sign-tint);
+  border: 1px solid #CADCD3;
+  border-radius: var(--radius);
+  color: var(--sign);
+}
+.module__icon svg { width: 24px; height: 24px; }
+
+.module__num {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--hazard-deep);
+  display: block;
+  margin-bottom: 0.3rem;
+}
+.module__title { font-size: var(--step-2); }
+.module__body p { color: var(--ink-soft); }
+
+.module__points {
+  list-style: none;
+  margin: 1.2rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.55rem;
+  max-width: var(--measure);
+}
+.module__points li {
+  position: relative;
+  padding-left: 1.4rem;
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+}
+.module__points li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.62em;
+  width: 8px; height: 2px;
+  background: var(--hazard);
+}
+
+.module__media .video-well { border: 1px solid var(--mist); border-radius: var(--radius); }
+.module__runtime {
+  margin-top: 0.7rem;
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+/* --- Contact page -------------------------------------------------------- */
+.contact__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: start;
+}
+
+.contact-card {
+  background: var(--white);
+  border: 1px solid var(--mist);
+  border-radius: var(--radius);
+  padding: clamp(1.4rem, 3vw, 2rem);
+}
+.contact-card__name {
+  font-family: var(--display);
+  font-size: var(--step-1);
+  font-weight: 700;
+  font-stretch: 108%;
+  line-height: 1.1;
+}
+.contact-card__role {
+  font-size: var(--step--1);
+  color: var(--sign);
+  margin: 0.35rem 0 0;
+}
+.contact-card__org {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin: 0.55rem 0 0;
+}
+
+.detail-list {
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 1.4rem 0 0;
+  border-top: 1px solid var(--mist);
+  display: grid;
+  gap: 1.05rem;
+}
+.detail-list dt {
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 0.2rem;
+}
+.detail-list dd { margin: 0; font-size: var(--step-0); }
+.detail-list dd a { text-decoration: none; }
+.detail-list dd a:hover { text-decoration: underline; }
+
+.response-note {
+  margin-top: 1.5rem;
+  padding: 1rem 1.1rem;
+  background: var(--sign-tint);
+  border-left: 3px solid var(--sign);
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+}
+.response-note p { max-width: none; }
+
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 1rem; }
+.form-grid .field--wide { grid-column: 1 / -1; }
+
+
+/* 8. MOTION & RESPONSIVE =================================================== */
+
+/* One reveal, used sparingly — content lifts once as it enters. */
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.is-visible { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+@media (max-width: 1000px) {
+  .anatomy__track { grid-template-columns: repeat(3, 1fr); }
+  .beat { padding-bottom: 1.6rem; }
+  .beat:nth-child(3) { border-right: 0; }
+  .grid--4 { grid-template-columns: repeat(2, 1fr); }
+  .footer__grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 860px) {
+  .hero__grid,
+  .contact__grid,
+  .module { grid-template-columns: 1fr; }
+
+  .module { gap: 1.6rem; }
+  .module:nth-child(even) .module__body { order: 0; }
+  .module__media { order: -1; }
+
+  .cta-band { grid-template-columns: 1fr; }
+  .cta-band .btn { justify-self: start; }
+
+  .audience__row { grid-template-columns: 2.5rem 1fr; }
+  .audience__note { grid-column: 2 / -1; }
+
+  /* Mobile nav: a simple disclosure panel, no overlay theatrics. */
+  .nav-toggle { display: inline-flex; }
+  .nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    background: var(--white);
+    border-bottom: 1px solid var(--mist);
+    box-shadow: var(--shadow-card);
+    padding: 0.5rem var(--gutter) 1.2rem;
+  }
+  .nav.is-open { display: flex; }
+  .nav__link {
+    padding-block: 0.85rem;
+    border-bottom: 1px solid var(--mist);
+    border-left: 2px solid transparent;
+  }
+  .nav__link[aria-current="page"] { border-bottom-color: var(--mist); border-left-color: var(--hazard); padding-left: 0.6rem; }
+  .nav .btn { margin-top: 1rem; }
+  .header__inner { position: relative; }
+}
+
+@media (max-width: 620px) {
+  .anatomy__track { grid-template-columns: 1fr; border-top: 0; }
+  .beat {
+    border-right: 0;
+    border-top: 2px solid var(--ink);
+    padding: 1.5rem 0 1.3rem;
+  }
+  .grid--3, .grid--4 { grid-template-columns: 1fr; }
+  .form-grid { grid-template-columns: 1fr; }
+  .footer__grid { grid-template-columns: 1fr; }
+  .hero__stats { gap: 1.2rem 2rem; }
+}
+
+@media print {
+  .site-header, .site-footer, .video-band, .btn { display: none; }
+  body { background: #fff; }
+}

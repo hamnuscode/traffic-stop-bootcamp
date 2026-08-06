@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Training Modules — Traffic Stop Bootcamp</title>
+<meta name="description" content="The four Traffic Stop Bootcamp training modules. Password required.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0B5B45">
+
+<link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+
+<!-- Runs before first paint so a returning, unlocked visitor never sees the
+     gate flash. The real check lives in assets/js/gate.js. -->
+<script>
+  try {
+    if (sessionStorage.getItem('tsb-modules-unlocked') === '1') {
+      document.documentElement.setAttribute('data-gate', 'open');
+    }
+  } catch (e) {}
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ===================== HEADER ===================== -->
+<header class="site-header">
+  <div class="shell header__inner">
+
+    <a class="brand" href="index.html">
+      <img class="brand__mark" src="assets/img/logo.svg" alt="" width="44" height="44">
+      <span class="brand__text">
+        <span class="brand__name">Traffic Stop Bootcamp</span>
+        <span class="brand__org">Journey 2 Justice Learning</span>
+      </span>
+    </a>
+
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Menu">
+      <svg viewBox="0 0 20 14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path d="M0 1h20M0 7h20M0 13h20"/>
+      </svg>
+    </button>
+
+    <nav class="nav" id="primary-nav" aria-label="Primary">
+      <a class="nav__link" href="index.html">Home</a>
+      <a class="nav__link nav__lock" href="modules.html" aria-current="page">
+        Modules
+        <svg viewBox="0 0 12 14" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <rect x="1" y="6" width="10" height="7" rx="1.5"/><path d="M3.5 6V4a2.5 2.5 0 015 0v2"/>
+        </svg>
+      </a>
+      <a class="nav__link" href="contact.html">Contact</a>
+      <a class="btn btn--primary" href="contact.html">Request access</a>
+    </nav>
+
+  </div>
+  <div class="tick-rule" aria-hidden="true"></div>
+</header>
+
+<main id="main">
+
+  <!-- ===================== PASSWORD GATE ===================== -->
+  <section class="gate" id="gate">
+    <div class="shell" style="display:grid;justify-items:center">
+      <div class="gate__card">
+
+        <span class="gate__lock" aria-hidden="true">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7">
+            <rect x="3" y="8.5" width="14" height="9.5" rx="2"/>
+            <path d="M6.5 8.5V6a3.5 3.5 0 017 0v2.5"/>
+            <circle cx="10" cy="13" r="1.2" fill="currentColor" stroke="none"/>
+          </svg>
+        </span>
+
+        <h1>Training modules</h1>
+        <p>This library is open to enrolled partners. Enter the password from your welcome email to continue.</p>
+
+        <form id="gate-form" novalidate>
+          <div class="field">
+            <label for="gate-password">Password</label>
+            <input id="gate-password" type="password" autocomplete="current-password" required autofocus>
+          </div>
+          <button class="btn btn--primary btn--block" type="submit">Unlock modules</button>
+          <p class="gate__error" id="gate-error" role="alert"></p>
+        </form>
+
+        <p class="gate__help">
+          Don't have it yet? <a href="contact.html">Request access</a> and we'll send the
+          password along with scheduling options.
+        </p>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== LOCKED CONTENT ===================== -->
+  <div id="modules-content" hidden>
+
+    <section class="section section--tight">
+      <div class="shell">
+        <div class="section__head">
+          <p class="eyebrow">Four modules · Watch in order</p>
+          <h2>The program, module by module.</h2>
+          <p class="lede">
+            Each module runs inside a single class period. Watch straight through the first
+            time, then use the discussion prompts to work back through the moments that
+            matter most for your group.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="shell">
+
+        <!-- ---------- MODULE 1 ---------- -->
+        <article class="module reveal">
+          <div class="module__body">
+            <div class="module__head">
+              <!-- ICON SLOT — swap this <svg> for the client's chosen icon. -->
+              <span class="module__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round">
+                  <circle cx="12" cy="13.5" r="7.5"/>
+                  <path d="M12 9.5v4l2.5 2M9.5 2.5h5M12 2.5v3"/>
+                </svg>
+              </span>
+              <div>
+                <span class="module__num">Module 01</span>
+                <h3 class="module__title">The First Five Minutes</h3>
+              </div>
+            </div>
+
+            <p>
+              The opening moments of a stop set its tone. This module covers what happens
+              from the instant the lights appear to the first words exchanged: where to pull
+              over, how to position the car, what to do with your hands, and why announcing
+              every movement matters more than anything you say.
+            </p>
+
+            <ul class="module__points">
+              <li>Choosing a safe, visible place to stop</li>
+              <li>Engine, windows, and interior lighting after dark</li>
+              <li>Hand placement and narrating each movement</li>
+              <li>Passengers: what they should and shouldn't do</li>
+            </ul>
+          </div>
+
+          <div class="module__media">
+            <!-- VIDEO SLOT — replace the placeholder with:
+                 <video controls playsinline preload="metadata" poster="assets/img/module-1-poster.jpg">
+                   <source src="assets/video/module-1.mp4" type="video/mp4">
+                 </video> -->
+            <div class="video-well">
+              <div class="video-placeholder">
+                <span class="video-placeholder__play" aria-hidden="true">
+                  <svg viewBox="0 0 20 22" fill="currentColor"><path d="M0 0l20 11L0 22z"/></svg>
+                </span>
+                <p>Module 01 video</p>
+              </div>
+            </div>
+            <div class="module__runtime">
+              <span>Module 01</span>
+              <span>Runtime TBC</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- ---------- MODULE 2 ---------- -->
+        <article class="module reveal">
+          <div class="module__body">
+            <div class="module__head">
+              <span class="module__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round">
+                  <path d="M3 5.5h11v7H8l-3.5 3v-3H3z"/>
+                  <path d="M10.5 15.5h6.5l3 2.5v-2.5h1v-7h-4"/>
+                </svg>
+              </span>
+              <div>
+                <span class="module__num">Module 02</span>
+                <h3 class="module__title">Communication Skills</h3>
+              </div>
+            </div>
+
+            <p>
+              What you say is only part of it. This module works on tone, pace, and word
+              choice — answering questions honestly without volunteering trouble, staying
+              level when a question feels unfair, and keeping the exchange on the business
+              of the stop.
+            </p>
+
+            <ul class="module__points">
+              <li>Answering directly without escalating</li>
+              <li>Tone, volume, and pace under pressure</li>
+              <li>Phrases that keep the exchange steady</li>
+              <li>Staying respectful while holding your ground</li>
+            </ul>
+          </div>
+
+          <div class="module__media">
+            <div class="video-well">
+              <div class="video-placeholder">
+                <span class="video-placeholder__play" aria-hidden="true">
+                  <svg viewBox="0 0 20 22" fill="currentColor"><path d="M0 0l20 11L0 22z"/></svg>
+                </span>
+                <p>Module 02 video</p>
+              </div>
+            </div>
+            <div class="module__runtime">
+              <span>Module 02</span>
+              <span>Runtime TBC</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- ---------- MODULE 3 ---------- -->
+        <article class="module reveal">
+          <div class="module__body">
+            <div class="module__head">
+              <span class="module__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 6.5l4 4 4-4 4 4 4-4"/>
+                  <path d="M4 13l4 3.5 4-3.5 4 3.5 4-3.5"/>
+                  <path d="M4 20h16"/>
+                </svg>
+              </span>
+              <div>
+                <span class="module__num">Module 03</span>
+                <h3 class="module__title">De-Escalation Lite</h3>
+              </div>
+            </div>
+
+            <p>
+              Tension has tells, and most of them show up before anyone raises their voice.
+              This module teaches how to read those early signals and bring the temperature
+              down with posture, pace, and stillness — practical technique, not theory.
+            </p>
+
+            <ul class="module__points">
+              <li>Early signals that a stop is tightening</li>
+              <li>Body language that lowers the temperature</li>
+              <li>Managing your own adrenaline in the moment</li>
+              <li>When to say less and simply comply</li>
+            </ul>
+          </div>
+
+          <div class="module__media">
+            <div class="video-well">
+              <div class="video-placeholder">
+                <span class="video-placeholder__play" aria-hidden="true">
+                  <svg viewBox="0 0 20 22" fill="currentColor"><path d="M0 0l20 11L0 22z"/></svg>
+                </span>
+                <p>Module 03 video</p>
+              </div>
+            </div>
+            <div class="module__runtime">
+              <span>Module 03</span>
+              <span>Runtime TBC</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- ---------- MODULE 4 ---------- -->
+        <article class="module reveal">
+          <div class="module__body">
+            <div class="module__head">
+              <span class="module__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M15 3.5H6a1.5 1.5 0 00-1.5 1.5v14A1.5 1.5 0 006 20.5h12a1.5 1.5 0 001.5-1.5V8z"/>
+                  <path d="M14.5 3.5V8h5"/>
+                  <path d="M8.5 14.5l2.5 2.5 4.5-5"/>
+                </svg>
+              </span>
+              <div>
+                <span class="module__num">Module 04</span>
+                <h3 class="module__title">Dealing with Consent and Final Steps</h3>
+              </div>
+            </div>
+
+            <p>
+              The last module covers the part most people are least sure about: what consent
+              to a search actually means, how to decline one calmly and clearly, and how a
+              stop properly ends — including what to write down afterwards if something
+              about it needs to be raised later.
+            </p>
+
+            <ul class="module__points">
+              <li>What consent to a search does and doesn't cover</li>
+              <li>Declining clearly, calmly, and once</li>
+              <li>Asking whether you're free to go</li>
+              <li>Recording details and filing a complaint afterwards</li>
+            </ul>
+          </div>
+
+          <div class="module__media">
+            <div class="video-well">
+              <div class="video-placeholder">
+                <span class="video-placeholder__play" aria-hidden="true">
+                  <svg viewBox="0 0 20 22" fill="currentColor"><path d="M0 0l20 11L0 22z"/></svg>
+                </span>
+                <p>Module 04 video</p>
+              </div>
+            </div>
+            <div class="module__runtime">
+              <span>Module 04</span>
+              <span>Runtime TBC</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ---------- CTA ---------- -->
+    <section class="section section--tight">
+      <div class="shell">
+        <div class="cta-band reveal">
+          <div>
+            <h2>Running these with a group?</h2>
+            <p>We provide a facilitator guide, discussion prompts, and the option of a live session with a Journey 2 Justice instructor.</p>
+          </div>
+          <a class="btn" href="contact.html">Talk to David</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="site-footer">
+  <div class="shell">
+    <div class="footer__grid">
+
+      <div>
+        <p class="brand__name" style="color:#fff">Traffic Stop Bootcamp</p>
+        <p class="footer__brand-line" style="margin-top:0.7rem">
+          A training program of Journey 2 Justice Learning LLC, preparing young people and
+          families to navigate traffic stops safely and informedly.
+        </p>
+      </div>
+
+      <div>
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="modules.html">Training modules</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:David@TSBootcamp.com">David@TSBootcamp.com</a></li>
+          <li><a href="tel:+15555550142">(555) 555-0142</a></li>
+          <li>Atlanta, Georgia</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer__bottom">
+      <span>© <span class="js-year">2026</span> Journey 2 Justice Learning LLC</span>
+      <span>Educational program — not legal advice</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/site.js" defer></script>
+<script src="assets/js/gate.js" defer></script>
+</body>
+</html>

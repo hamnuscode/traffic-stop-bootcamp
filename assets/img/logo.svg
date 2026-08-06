@@ -1,0 +1,18 @@
+<!--
+  PLACEHOLDER LOGO — replace this file with the client's supplied mark.
+  Keep the filename (logo.svg) and the 64x64 viewBox and no HTML changes are
+  needed. If the client's file is a PNG, swap the src in the three page
+  headers to assets/img/logo.png instead.
+
+  Mark: a guide-sign panel with the regulation white keyline, carrying a
+  centre line that resolves into a chevron — route, guidance, forward.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Traffic Stop Bootcamp">
+  <rect width="64" height="64" rx="9" fill="#0B5B45"/>
+  <rect x="4.5" y="4.5" width="55" height="55" rx="5.5" fill="none" stroke="#FFFFFF" stroke-opacity="0.6" stroke-width="1.6"/>
+  <g fill="#FFFFFF">
+    <rect x="29.5" y="38" width="5" height="7" rx="1"/>
+    <rect x="29.5" y="48.5" width="5" height="6" rx="1" fill-opacity="0.55"/>
+  </g>
+  <path d="M32 13.5 L45 31.5 H37.5 V36 H26.5 V31.5 H19 Z" fill="#E6A93B"/>
+</svg>

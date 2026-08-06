@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Traffic Stop Bootcamp — Journey 2 Justice Learning</title>
+<meta name="description" content="A four-module video program that prepares students and community members to handle a traffic stop calmly, know their rights, and end the encounter safely.">
+<meta name="theme-color" content="#0B5B45">
+
+<meta property="og:title" content="Traffic Stop Bootcamp">
+<meta property="og:description" content="Know exactly what to do in the first five minutes.">
+<meta property="og:type" content="website">
+
+<link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ===================== HEADER ===================== -->
+<header class="site-header">
+  <div class="shell header__inner">
+
+    <!-- LOGO SLOT: replace assets/img/logo.svg with the client's file. -->
+    <a class="brand" href="index.html">
+      <img class="brand__mark" src="assets/img/logo.svg" alt="" width="44" height="44">
+      <span class="brand__text">
+        <span class="brand__name">Traffic Stop Bootcamp</span>
+        <span class="brand__org">Journey 2 Justice Learning</span>
+      </span>
+    </a>
+
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Menu">
+      <svg viewBox="0 0 20 14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path d="M0 1h20M0 7h20M0 13h20"/>
+      </svg>
+    </button>
+
+    <nav class="nav" id="primary-nav" aria-label="Primary">
+      <a class="nav__link" href="index.html" aria-current="page">Home</a>
+      <a class="nav__link nav__lock" href="modules.html">
+        Modules
+        <svg viewBox="0 0 12 14" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <rect x="1" y="6" width="10" height="7" rx="1.5"/><path d="M3.5 6V4a2.5 2.5 0 015 0v2"/>
+        </svg>
+      </a>
+      <a class="nav__link" href="contact.html">Contact</a>
+      <a class="btn btn--primary" href="contact.html">Request access</a>
+    </nav>
+
+  </div>
+  <div class="tick-rule" aria-hidden="true"></div>
+</header>
+
+<main id="main">
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero">
+    <div class="shell hero__grid">
+
+      <div>
+        <p class="eyebrow">A program of Journey 2 Justice Learning</p>
+        <h1>Know exactly what to do in <em>the first five minutes</em>.</h1>
+        <p class="lede">
+          Traffic Stop Bootcamp is a four-module video course that prepares students and
+          community members to handle a traffic stop calmly and confidently — what to do,
+          what to say, and what the law actually allows — so the encounter ends safely for
+          everyone in it.
+        </p>
+
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#highlights">Watch the highlights</a>
+          <a class="btn btn--ghost" href="modules.html">See the modules</a>
+        </div>
+
+        <dl class="hero__stats">
+          <div class="hero__stat">
+            <dt>Modules</dt>
+            <dd>4 on demand</dd>
+          </div>
+          <div class="hero__stat">
+            <dt>Total runtime</dt>
+            <dd>Under 90 min</dd>
+          </div>
+          <div class="hero__stat">
+            <dt>Built for</dt>
+            <dd>Grades 9–12 &amp; adults</dd>
+          </div>
+        </dl>
+      </div>
+
+      <!-- Lead form. Endpoint is configured once, in assets/js/site.js -->
+      <div class="lead-card">
+        <h2>Request program access</h2>
+        <p>Tell us where you'd run the bootcamp and we'll send the module password and scheduling options.</p>
+
+        <form class="js-form" novalidate>
+          <input type="hidden" name="_subject" value="Traffic Stop Bootcamp — access request">
+          <p class="hp"><label>Leave this empty <input type="text" name="_honey" tabindex="-1" autocomplete="off"></label></p>
+
+          <div class="field">
+            <label for="lead-name">Full name</label>
+            <input id="lead-name" name="name" type="text" autocomplete="name" required>
+          </div>
+
+          <div class="field">
+            <label for="lead-email">Email</label>
+            <input id="lead-email" name="email" type="email" autocomplete="email" required>
+          </div>
+
+          <div class="field">
+            <label for="lead-org">Organization</label>
+            <input id="lead-org" name="organization" type="text" autocomplete="organization" required>
+          </div>
+
+          <div class="field">
+            <label for="lead-role">Your role</label>
+            <select id="lead-role" name="role" required>
+              <option value="">Select one</option>
+              <option>School or district staff</option>
+              <option>Faith or community organization</option>
+              <option>Youth or mentorship program</option>
+              <option>Law enforcement</option>
+              <option>Parent or guardian</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <button class="btn btn--primary btn--block" type="submit">Request access</button>
+          <p class="form-status js-status" role="status" aria-live="polite"></p>
+          <p class="form-note">Goes to David@TSBootcamp.com. Replies within two business days.</p>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================== HIGHLIGHTS VIDEO ===================== -->
+  <section class="section video-band" id="highlights">
+    <div class="shell">
+
+      <div class="video-head reveal">
+        <div>
+          <p class="eyebrow eyebrow--light">Program highlights</p>
+          <h2>Five minutes on what the bootcamp teaches, and why.</h2>
+        </div>
+        <p class="meta">Runtime 04:45 · Full program</p>
+      </div>
+
+      <div class="video-shell reveal">
+        <!-- VIDEO SLOT — drop the highlights file in and delete the placeholder:
+             <video controls playsinline preload="metadata" poster="assets/img/highlights-poster.jpg">
+               <source src="assets/video/highlights.mp4" type="video/mp4">
+             </video>
+             A Vimeo or YouTube <iframe> can go here instead, unchanged. -->
+        <div class="sign-frame">
+          <div class="video-well">
+            <div class="video-placeholder">
+              <span class="video-placeholder__play" aria-hidden="true">
+                <svg viewBox="0 0 20 22" fill="currentColor"><path d="M0 0l20 11L0 22z"/></svg>
+              </span>
+              <p>Program highlights video</p>
+            </div>
+          </div>
+        </div>
+        <p class="video-caption">Awaiting final cut from the client — the file drops straight into this frame.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================== SIGNATURE: ANATOMY OF A STOP ===================== -->
+  <section class="section">
+    <div class="shell">
+
+      <div class="section__head reveal">
+        <p class="eyebrow">Anatomy of a stop</p>
+        <h2>A stop is a sequence. We teach it in order.</h2>
+        <p class="lede">
+          Almost everything that determines how a stop goes is decided in the first
+          few moments. The program walks through those moments one at a time, so the
+          right response is already familiar when it matters.
+        </p>
+      </div>
+
+      <div class="anatomy__track reveal">
+
+        <div class="beat">
+          <span class="beat__time">0:00</span>
+          <h3 class="beat__title">Lights behind you</h3>
+          <p class="beat__text">Signal, slow down, and choose a lit, open place to pull over. Where you stop is your first decision.</p>
+        </div>
+
+        <div class="beat">
+          <span class="beat__time">0:20</span>
+          <h3 class="beat__title">Stopped and still</h3>
+          <p class="beat__text">Engine off, window down, dome light on after dark. Hands stay on the wheel where they can be seen.</p>
+        </div>
+
+        <div class="beat">
+          <span class="beat__time">0:45</span>
+          <h3 class="beat__title">First contact</h3>
+          <p class="beat__text">The officer speaks first. Answer plainly, keep your voice level, and say what you're about to do before you do it.</p>
+        </div>
+
+        <div class="beat">
+          <span class="beat__time">1:30</span>
+          <h3 class="beat__title">Reaching for documents</h3>
+          <p class="beat__text">Name where your license and registration are, then move slowly. No sudden reaches, no surprises.</p>
+        </div>
+
+        <div class="beat">
+          <span class="beat__time">3:00</span>
+          <h3 class="beat__title">If the tone shifts</h3>
+          <p class="beat__text">Stay still and keep your voice even. You can decline a search without arguing — the roadside is not where a case is won.</p>
+        </div>
+
+        <div class="beat">
+          <span class="beat__time">5:00+</span>
+          <h3 class="beat__title">Ending the stop</h3>
+          <p class="beat__text">Ask whether you're free to go. Note the agency and badge number. Anything you dispute, you dispute on paper, later.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== MODULE PREVIEW ===================== -->
+  <section class="section section--tint">
+    <div class="shell">
+
+      <div class="section__head reveal">
+        <p class="eyebrow">Training modules</p>
+        <h2>Four modules. One skill each.</h2>
+        <p class="lede">
+          Each module is a short video with a facilitator prompt, built to run inside a
+          single class period. The full library is password-protected for enrolled partners.
+        </p>
+      </div>
+
+      <div class="grid grid--4 reveal">
+
+        <a class="module-preview" href="modules.html">
+          <span class="module-preview__num">01</span>
+          <span>
+            <h3>The First Five Minutes</h3>
+            <p>Pulling over, positioning, hands, and the opening exchange.</p>
+          </span>
+        </a>
+
+        <a class="module-preview" href="modules.html">
+          <span class="module-preview__num">02</span>
+          <span>
+            <h3>Communication Skills</h3>
+            <p>Tone, word choice, and answering questions without escalating.</p>
+          </span>
+        </a>
+
+        <a class="module-preview" href="modules.html">
+          <span class="module-preview__num">03</span>
+          <span>
+            <h3>De-Escalation Lite</h3>
+            <p>Reading tension early and lowering it with posture and pace.</p>
+          </span>
+        </a>
+
+        <a class="module-preview" href="modules.html">
+          <span class="module-preview__num">04</span>
+          <span>
+            <h3>Consent and Final Steps</h3>
+            <p>Searches, what consent means, and how to close the stop.</p>
+          </span>
+        </a>
+
+      </div>
+
+      <p class="form-note reveal" style="margin-top:1.4rem">
+        Partners receive the module password by email. <a href="contact.html">Request access</a>.
+      </p>
+
+    </div>
+  </section>
+
+  <!-- ===================== WHO IT'S FOR ===================== -->
+  <section class="section section--dark">
+    <div class="shell">
+
+      <div class="section__head reveal">
+        <p class="eyebrow eyebrow--light">Who it's for</p>
+        <h2>Built for the communities that ask for it most.</h2>
+        <p class="lede" style="color:rgba(255,255,255,0.76)">
+          Journey 2 Justice Learning runs Traffic Stop Bootcamp through schools, districts,
+          and community organizations — frequently alongside local law enforcement, so young
+          people and officers work through the same encounter in the same room.
+        </p>
+      </div>
+
+      <div class="audience reveal">
+
+        <div class="audience__row">
+          <span class="audience__idx">01</span>
+          <span class="audience__name">Schools &amp; districts</span>
+          <p class="audience__note">Assemblies, advisory periods, and driver's-ed add-ons for grades 9 through 12.</p>
+        </div>
+
+        <div class="audience__row">
+          <span class="audience__idx">02</span>
+          <span class="audience__name">Faith &amp; community organizations</span>
+          <p class="audience__note">Evening sessions for families, delivered in the spaces they already trust.</p>
+        </div>
+
+        <div class="audience__row">
+          <span class="audience__idx">03</span>
+          <span class="audience__name">Youth &amp; mentorship programs</span>
+          <p class="audience__note">Small-group workshops with a facilitated discussion after each module.</p>
+        </div>
+
+        <div class="audience__row">
+          <span class="audience__idx">04</span>
+          <span class="audience__name">Law enforcement partners</span>
+          <p class="audience__note">Co-delivered sessions where officers answer questions directly, on the record.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CTA ===================== -->
+  <section class="section section--tight">
+    <div class="shell">
+      <div class="cta-band reveal">
+        <div>
+          <h2>Bring the bootcamp to your community.</h2>
+          <p>Tell us your setting and group size. We'll come back with a schedule, a facilitator guide, and access to the modules.</p>
+        </div>
+        <a class="btn" href="contact.html">Start the conversation</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="site-footer">
+  <div class="shell">
+    <div class="footer__grid">
+
+      <div>
+        <p class="brand__name" style="color:#fff">Traffic Stop Bootcamp</p>
+        <p class="footer__brand-line" style="margin-top:0.7rem">
+          A training program of Journey 2 Justice Learning LLC, preparing young people and
+          families to navigate traffic stops safely and informedly.
+        </p>
+      </div>
+
+      <div>
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="modules.html">Training modules</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:David@TSBootcamp.com">David@TSBootcamp.com</a></li>
+          <li><a href="tel:+15555550142">(555) 555-0142</a></li>
+          <li>Atlanta, Georgia</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer__bottom">
+      <span>© <span class="js-year">2026</span> Journey 2 Justice Learning LLC</span>
+      <span>Educational program — not legal advice</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>
