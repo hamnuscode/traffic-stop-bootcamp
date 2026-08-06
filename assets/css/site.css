@@ -54,7 +54,7 @@
   /* Rhythm */
   --gutter:  clamp(1.25rem, 4vw, 3rem);
   --measure: 68ch;
-  --shell:   1220px;
+  --shell:   1180px;
   --radius:  6px;         /* signage corners are tight, never pill-shaped */
 
   --shadow-card: 0 1px 2px rgba(14, 28, 36, 0.05),
@@ -186,8 +186,8 @@ strong { font-weight: 600; }
   margin-inline: auto;
 }
 
-.section { padding-block: clamp(3.5rem, 8vw, 6.5rem); }
-.section--tight { padding-block: clamp(2.5rem, 5vw, 4rem); }
+.section { padding-block: clamp(3.25rem, 6.5vw, 5.25rem); }
+.section--tight { padding-block: clamp(2.25rem, 4vw, 3.25rem); }
 
 .section--dark {
   background: var(--ink);
@@ -199,7 +199,7 @@ strong { font-weight: 600; }
 
 .section--tint { background: var(--sign-tint); }
 
-.section__head { max-width: 56ch; margin-bottom: clamp(2rem, 4vw, 3.25rem); }
+.section__head { max-width: 58ch; margin-bottom: clamp(1.8rem, 3.2vw, 2.75rem); }
 
 
 /* 5. COMPONENTS ============================================================ */
@@ -268,7 +268,7 @@ strong { font-weight: 600; }
 .btn--block { width: 100%; }
 
 /* --- Forms --------------------------------------------------------------- */
-.field { margin-bottom: 1rem; }
+.field { margin-bottom: 0.85rem; }
 
 .field label {
   display: block;
@@ -494,7 +494,7 @@ strong { font-weight: 600; }
    the only atmosphere on the page — a low, cool light off the top edge.     */
 .hero {
   position: relative;
-  padding-block: clamp(3rem, 6.5vw, 5rem) clamp(2.5rem, 5vw, 4rem);
+  padding-block: clamp(2.5rem, 4.5vw, 3.75rem) clamp(2.5rem, 4.5vw, 3.75rem);
   overflow: hidden;
 }
 .hero::before {
@@ -511,17 +511,16 @@ strong { font-weight: 600; }
 
 .hero__grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
-  gap: clamp(2rem, 5vw, 4.5rem);
-  align-items: start;
+  grid-template-columns: minmax(0, 1.12fr) minmax(340px, 0.88fr);
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: center;
 }
 
-.hero__lead { padding-top: clamp(0rem, 1.5vw, 1.2rem); max-width: 34ch; }
+/* No max-width here — the grid track is the measure. Capping the copy
+   narrower than its own column is what opened a dead gutter beside it. */
+.hero__lead { padding-top: 0; }
 
-.hero h1 {
-  margin-bottom: 1.15rem;
-  max-width: 15ch;
-}
+.hero h1 { margin-bottom: 1.1rem; }
 .hero h1 em {
   color: var(--sign);
   /* A hazard-amber rule under the phrase that names the program. */
@@ -532,24 +531,25 @@ strong { font-weight: 600; }
   padding-bottom: 0.06em;
 }
 
-.hero .lede { max-width: 46ch; }
+.hero .lede { max-width: 44ch; }
 
 .hero__actions { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1.7rem; }
 
 .hero__stats {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 0;
-  margin-top: 2.6rem;
+  margin-top: 2.2rem;
   border-top: 1px solid var(--mist);
 }
 .hero__stat {
-  padding: 1rem clamp(1rem, 2.4vw, 1.9rem) 0 0;
-  margin-right: clamp(1rem, 2.4vw, 1.9rem);
+  padding: 0.95rem 1.1rem 0 0;
   border-right: 1px solid var(--mist);
   position: relative;
 }
-.hero__stat:last-child { border-right: 0; margin-right: 0; padding-right: 0; }
+.hero__stat + .hero__stat { padding-left: 1.1rem; }
+.hero__stat + .hero__stat::before { left: 1.1rem; }
+.hero__stat:last-child { border-right: 0; padding-right: 0; }
 /* The tick motif, repeated: each figure hangs off a mark on the rule. */
 .hero__stat::before {
   content: "";
@@ -588,8 +588,8 @@ strong { font-weight: 600; }
   align-items: baseline;
   justify-content: space-between;
   gap: 1rem;
-  padding-bottom: 1rem;
-  margin-bottom: 1.4rem;
+  padding-bottom: 0.9rem;
+  margin-bottom: 1.2rem;
   border-bottom: 1px solid var(--mist);
 }
 .lead-card h2 {
@@ -1092,14 +1092,15 @@ html[data-gate="open"] .gate { display: none; }
   .form-grid { grid-template-columns: 1fr; }
   .footer__grid { grid-template-columns: 1fr; }
 
-  /* Stats become their own short list rather than squeezing three columns. */
-  .hero__stats { display: grid; grid-template-columns: 1fr 1fr; border-top: 0; }
-  .hero__stat {
+  /* Stats stack two-up rather than squeezing three columns into a phone. */
+  .hero__stats { grid-template-columns: 1fr 1fr; border-top: 0; }
+  .hero__stat,
+  .hero__stat + .hero__stat {
     border-right: 0;
     border-top: 1px solid var(--mist);
-    margin-right: 0;
     padding: 0.85rem 0.8rem 0 0;
   }
+  .hero__stat + .hero__stat::before { left: 0; }
   .hero__stat:last-child { grid-column: 1 / -1; }
 }
 
