@@ -15,7 +15,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400..700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400..600&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/site.css">
 </head>
 <body>
@@ -63,14 +63,13 @@
   <section class="hero">
     <div class="shell hero__grid">
 
-      <div>
+      <div class="hero__lead">
         <p class="eyebrow">A program of Journey 2 Justice Learning</p>
-        <h1>Know exactly what to do in <em>the first five minutes</em>.</h1>
+        <h1>Know what to do in <em>the first five minutes</em>.</h1>
         <p class="lede">
-          Traffic Stop Bootcamp is a four-module video course that prepares students and
-          community members to handle a traffic stop calmly and confidently — what to do,
-          what to say, and what the law actually allows — so the encounter ends safely for
-          everyone in it.
+          A four-module video course that prepares students and community members to handle
+          a traffic stop calmly — what to do, what to say, and what the law allows — so the
+          encounter ends safely for everyone in it.
         </p>
 
         <div class="hero__actions">
@@ -96,8 +95,13 @@
 
       <!-- Lead form. Endpoint is configured once, in assets/js/site.js -->
       <div class="lead-card">
-        <h2>Request program access</h2>
-        <p>Tell us where you'd run the bootcamp and we'll send the module password and scheduling options.</p>
+        <div class="lead-card__head">
+          <div>
+            <h2>Request program access</h2>
+            <p>We'll send the module password and scheduling options.</p>
+          </div>
+          <span class="lead-card__step">Takes a minute</span>
+        </div>
 
         <form class="js-form" novalidate>
           <input type="hidden" name="_subject" value="Traffic Stop Bootcamp — access request">
@@ -246,35 +250,27 @@
       <div class="grid grid--4 reveal">
 
         <a class="module-preview" href="modules.html">
-          <span class="module-preview__num">01</span>
-          <span>
-            <h3>The First Five Minutes</h3>
-            <p>Pulling over, positioning, hands, and the opening exchange.</p>
-          </span>
+          <span class="module-preview__num">Module 01</span>
+          <h3>The First Five Minutes</h3>
+          <p>Pulling over, positioning, hands, and the opening exchange.</p>
         </a>
 
         <a class="module-preview" href="modules.html">
-          <span class="module-preview__num">02</span>
-          <span>
-            <h3>Communication Skills</h3>
-            <p>Tone, word choice, and answering questions without escalating.</p>
-          </span>
+          <span class="module-preview__num">Module 02</span>
+          <h3>Communication Skills</h3>
+          <p>Tone, word choice, and answering questions without escalating.</p>
         </a>
 
         <a class="module-preview" href="modules.html">
-          <span class="module-preview__num">03</span>
-          <span>
-            <h3>De-Escalation Lite</h3>
-            <p>Reading tension early and lowering it with posture and pace.</p>
-          </span>
+          <span class="module-preview__num">Module 03</span>
+          <h3>De-Escalation Lite</h3>
+          <p>Reading tension early and lowering it with posture and pace.</p>
         </a>
 
         <a class="module-preview" href="modules.html">
-          <span class="module-preview__num">04</span>
-          <span>
-            <h3>Consent and Final Steps</h3>
-            <p>Searches, what consent means, and how to close the stop.</p>
-          </span>
+          <span class="module-preview__num">Module 04</span>
+          <h3>Consent and Final Steps</h3>
+          <p>Searches, what consent means, and how to close the stop.</p>
         </a>
 
       </div>

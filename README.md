@@ -81,7 +81,9 @@ The palette and structure come from roadway signage rather than a generic templa
 | `--sheeting` | `#EDF1EE` | Page ground — pale reflective sheeting |
 | `--mist` | `#D6DDD8` | Hairlines and borders |
 
-Type: **Archivo** (display, set at expanded widths for signage breadth), **Source Serif 4** (body — the know-your-rights document register), **IBM Plex Mono** (time codes and labels only).
+Type: **Newsreader** for headlines — an editorial serif with real optical sizing, set at light weights (450) with a true italic doing the emphasis, so headings read composed rather than shouted. **Instrument Sans** for body and interface. **IBM Plex Mono** only on measured things: time codes, module numbers, small data labels.
+
+Nothing is set in an expanded width and almost nothing is uppercase, which is deliberate — the earlier draft was too heavy and read as blocky.
 
 The recurring motif is the **tick rule** — the measured marks under the header and beside each timeline beat. It carries the site's one structural idea: a traffic stop is a sequence in time, and the four modules follow that sequence. That's why the modules are numbered — the order is information, not decoration.
 
