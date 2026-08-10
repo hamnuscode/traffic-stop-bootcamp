@@ -606,10 +606,11 @@ strong { font-weight: 600; }
 }
 
 /* The programme still, shown whole — no cropping, so the full frame reads.
-   Sits under the copy and form, and hands off into the dark video band. */
+   Sits at the foot of the copy column, sized to that column rather than the
+   page, so it stays inside the hero instead of pushing past the fold. */
 .hero__figure {
-  margin: clamp(2.25rem, 4.5vw, 3.5rem) auto 0;
-  max-width: 1000px;
+  margin: clamp(1.6rem, 3vw, 2.2rem) 0 0;
+  max-width: 100%;
 }
 .hero__figure img {
   width: 100%;
