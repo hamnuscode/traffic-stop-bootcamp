@@ -11,8 +11,8 @@ contact.html        Contact details + message form
 assets/css/site.css All styling. Tokens are at the top.
 assets/js/site.js   Nav, scroll reveal, form submission. FORM_ENDPOINT lives here.
 assets/js/gate.js   Modules password gate. PASSWORD_HASH lives here.
-assets/img/logo.svg Placeholder logo — replace this file.
-assets/video/       Drop the five video files here.
+assets/img/          Logo (placeholder), module stills, pilot seal.
+
 ```
 
 ---
@@ -24,24 +24,23 @@ Everything below is marked with a comment in the code so it's easy to find.
 ### 1. Logo
 Replace `assets/img/logo.svg` with the client's file, keeping the filename. If it's a PNG, change `logo.svg` to `logo.png` in the three page headers and in the `<link rel="icon">` tag.
 
-### 2. Videos (5 total)
-Put the files in `assets/video/`. In each page, find the `VIDEO SLOT` comment and replace the placeholder block with:
+### 2. Videos — done
+All five are live as `youtube-nocookie` embeds, lazy-loaded.
 
-```html
-<video controls playsinline preload="metadata" poster="assets/img/module-1-poster.jpg">
-  <source src="assets/video/module-1.mp4" type="video/mp4">
-</video>
-```
+| Where | Video | ID |
+|---|---|---|
+| Home `#highlights` | Program preview (3–5 min) | `TdifiG6M3fw` |
+| Modules 01 | The Ideal Traffic Stop | `EI_jgZyDTAo` |
+| Modules 02 | Communication Skills | `qg_yQRKrRpA` (starts 0:39) |
+| Modules 03 | Diffusing a High-Tension Situation | `cFBOkqANdOY` (starts 0:10) |
+| Modules 04 | Replying to a Request to Search | `jVnONO_00xo` (starts 0:15) |
 
-A Vimeo or YouTube `<iframe>` drops into the same spot without any CSS changes. **Recommended:** host the module videos as unlisted Vimeo, so the files themselves are not publicly fetchable.
+To change one, edit the `src` on that `<iframe>`. Nothing else moves.
 
-- Home: highlights video (`index.html`, section `#highlights`)
-- Modules: four module videos (`modules.html`, one per `<article class="module">`)
+**Worth knowing:** the module videos are public on YouTube, so the site's password gate hides the *page*, not the videos. Setting them to Unlisted in YouTube Studio would close that gap without touching the site.
 
-### 3. Module descriptions and icons
-`modules.html` — each module has a paragraph and a four-item `module__points` list, both written as placeholders pending the client's copy. The icon is an inline `<svg>` marked `ICON SLOT`; paste any 24×24 stroke icon in its place and it inherits the right colour and size automatically.
-
-Current placeholder icons: stopwatch (01), two speech bubbles (02), descending chevrons settling to a line (03), document with a check (04).
+### 3. Module descriptions and pictures — done
+Descriptions are the client's own text, used as supplied. Icons are gone; each module now carries a photograph in the `PICTURE SLOT` — stills pulled from the videos themselves, plus the supplied de-escalation still on module 03. Swap any `<img src>` in `assets/img/` to change one.
 
 ### 4. Modules password
 Default password is **`bootcamp2026`** — change it before launch.
@@ -64,8 +63,8 @@ Both forms post to FormSubmit, which relays to `David@TSBootcamp.com`. It needs 
 
 To use a different service, change the single `FORM_ENDPOINT` string at the top of `assets/js/site.js`. If a submission ever fails, the form shows the direct email address rather than a dead end.
 
-### 6. Contact details
-`contact.html` and the three footers carry placeholder name, phone, and address. Real values go in `.contact-card` and the `.detail-list` block.
+### 6. Contact details — done
+David Klepinger, Managing Partner, David@TSBootcamp.com, 770 656-1486. No physical address anywhere on the site, by request.
 
 ---
 
@@ -85,7 +84,9 @@ Type: **Newsreader** for headlines — an editorial serif with real optical sizi
 
 Nothing is set in an expanded width and almost nothing is uppercase, which is deliberate — the earlier draft was too heavy and read as blocky.
 
-The recurring motif is the **tick rule** — the measured marks under the header and beside each timeline beat. It carries the site's one structural idea: a traffic stop is a sequence in time, and the four modules follow that sequence. That's why the modules are numbered — the order is information, not decoration.
+The **§** mark from the tagline repeats on the pilot offer — a statute glyph on a page about rights, doing the job a generic bullet would have done badly.
+
+The other recurring motif is the **tick rule** — the measured marks under the header and beside each timeline beat. It carries the site's one structural idea: a traffic stop is a sequence in time, and the four modules follow that sequence. That's why the modules are numbered — the order is information, not decoration.
 
 Motion is deliberately restrained: one fade-and-lift as blocks enter, hover states on links and cards, nothing else. `prefers-reduced-motion` is respected throughout.
 

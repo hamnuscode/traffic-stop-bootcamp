@@ -1,0 +1,24 @@
+<!--
+  Pilot workshop seal. Static, no animation. Sits over the photograph in the
+  pilot section on the home page. Ring text is set on a circular path so it
+  stays crisp at any size.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="Complimentary pilot session">
+  <defs>
+    <path id="seal-ring" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"/>
+  </defs>
+
+  <circle cx="60" cy="60" r="58" fill="#0B5B45"/>
+  <circle cx="60" cy="60" r="58" fill="none" stroke="#E6A93B" stroke-width="2.5"/>
+  <circle cx="60" cy="60" r="35" fill="none" stroke="#FFFFFF" stroke-opacity="0.28" stroke-width="1"/>
+
+  <text font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="9.4" font-weight="500"
+        letter-spacing="2.1" fill="#E6A93B">
+    <textPath href="#seal-ring" startOffset="2%">COMPLIMENTARY · PILOT SESSION · </textPath>
+  </text>
+
+  <text x="60" y="55" text-anchor="middle" font-family="Newsreader, Georgia, serif"
+        font-size="26" font-weight="500" fill="#FFFFFF">§</text>
+  <text x="60" y="74" text-anchor="middle" font-family="'IBM Plex Mono', ui-monospace, monospace"
+        font-size="8" letter-spacing="1.6" fill="#FFFFFF" fill-opacity="0.82">NO COST</text>
+</svg>
