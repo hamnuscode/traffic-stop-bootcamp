@@ -11,7 +11,7 @@ contact.html        Contact details + message form
 assets/css/site.css All styling. Tokens are at the top.
 assets/js/site.js   Nav, scroll reveal, form submission. FORM_ENDPOINT lives here.
 assets/js/gate.js   Modules password gate. PASSWORD_HASH lives here.
-assets/img/          Logo (placeholder), module stills, pilot seal.
+assets/img/          Logo lockup, module stills, anatomy + workshop photos, pilot seal.
 
 ```
 
@@ -21,15 +21,21 @@ assets/img/          Logo (placeholder), module stills, pilot seal.
 
 Everything below is marked with a comment in the code so it's easy to find.
 
-### 1. Logo
-Replace `assets/img/logo.svg` with the client's file, keeping the filename. If it's a PNG, change `logo.svg` to `logo.png` in the three page headers and in the `<link rel="icon">` tag.
+### 1. Logo — done
+The client's wordmark lockup is `assets/img/logo.png`, drawn in `--ink` on a transparent
+ground so it sits on the light header. `assets/img/logo-light.png` is the same artwork
+knocked out white, for a dark ground. The lockup carries the name itself, so the header
+sets only "Journey 2 Justice Learning" underneath it.
+
+`assets/img/mark.svg` is the compact favicon — the lockup's three lights, stacked so they
+stay legible at 16px.
 
 ### 2. Videos — done
 All five are live as `youtube-nocookie` embeds, lazy-loaded.
 
 | Where | Video | ID |
 |---|---|---|
-| Home `#highlights` | Program preview (3–5 min) | `TdifiG6M3fw` |
+| Home `#highlights` | Program preview | `0hLbRYU_4K4` |
 | Modules 01 | The Ideal Traffic Stop | `EI_jgZyDTAo` |
 | Modules 02 | Communication Skills | `qg_yQRKrRpA` (starts 0:39) |
 | Modules 03 | Diffusing a High-Tension Situation | `cFBOkqANdOY` (starts 0:10) |
@@ -37,10 +43,34 @@ All five are live as `youtube-nocookie` embeds, lazy-loaded.
 
 To change one, edit the `src` on that `<iframe>`. Nothing else moves.
 
+The home page preview carries two extra parameters and an `id`:
+
+- `cc_load_policy=0` keeps YouTube's own caption track off, because the film already has
+  captions burned in — with both on, every line appeared twice. `site.js` also calls
+  `unloadModule('captions')`, which covers visitors whose YouTube account forces captions
+  on for every video (the parameter alone can't override that).
+- `enablejsapi=1` lets `site.js` watch for the end of the video and send the viewer
+  straight to the contact form. That destination is `AFTER_VIDEO` in `site.js` — change
+  the string to point somewhere else. If the YouTube API script is ever blocked, the
+  video still plays as an ordinary embed.
+
 **Worth knowing:** the module videos are public on YouTube, so the site's password gate hides the *page*, not the videos. Setting them to Unlisted in YouTube Studio would close that gap without touching the site.
 
 ### 3. Module descriptions and pictures — done
-Descriptions are the client's own text, used as supplied. Icons are gone; each module now carries a photograph in the `PICTURE SLOT` — stills pulled from the videos themselves, plus the supplied de-escalation still on module 03. Swap any `<img src>` in `assets/img/` to change one.
+Descriptions are the client's own text, used as supplied. Icons are gone; every module
+carries a photograph in a `PICTURE SLOT`, on both the home page cards and the modules page.
+Swap any `<img src>` in `assets/img/` to change one.
+
+| File | Where it shows | Subject |
+|---|---|---|
+| `de-escalation.jpg` | Home hero | Night stop, wordless frame |
+| `anatomy.jpg` | Home, under "Anatomy of a stop" | Officer at the window with a clipboard |
+| `module-1.jpg` | Module 01 | Driver speaking with an officer |
+| `module-2.jpg` | Module 02 | Licence handed through the window |
+| `module-3.jpg` | Module 03 | Driver arguing out of the window |
+| `module-4.jpg` | Module 04 | Officer searching a car |
+| `module-arrest.jpg` | Module 04, second frame | An arrest — the closing section of that module |
+| `workshop.jpg` | Home, pilot workshop | A live session, with the pilot seal over it |
 
 ### 4. Modules password
 Default password is **`bootcamp2026`** — change it before launch.

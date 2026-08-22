@@ -1,0 +1,11 @@
+<!--
+  Favicon / compact mark. The lockup's three lights, stacked so they stay
+  legible at 16px where a horizontal row would smear together.
+  The full wordmark lockup lives in logo.png (logo-light.png on dark grounds).
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Traffic Stop Bootcamp">
+  <rect width="64" height="64" rx="10" fill="#0E1C24"/>
+  <circle cx="32" cy="18" r="9.5" fill="#E4595A"/>
+  <circle cx="32" cy="32" r="9.5" fill="#F2B95C"/>
+  <circle cx="32" cy="46" r="9.5" fill="#8FD05A"/>
+</svg>

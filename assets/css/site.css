@@ -390,16 +390,21 @@ strong { font-weight: 600; }
   padding-block: 0.8rem;
 }
 
-/* Logo slot — swap the <img> inside for the client's file, nothing else. */
+/* Logo slot — the client's wordmark lockup carries the name itself, so the
+   only type set here is the parent organisation underneath it. */
 .brand {
   display: inline-flex;
-  align-items: center;
-  gap: clamp(0.7rem, 1.2vw, 1.05rem);
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.34rem;
   text-decoration: none;
   color: var(--ink);
 }
-.brand__mark { width: clamp(52px, 5vw, 68px); height: auto; flex: none; }
-.brand__text { display: flex; flex-direction: column; line-height: 1.05; }
+.brand__lockup {
+  display: block;
+  width: clamp(186px, 20vw, 266px);
+  height: auto;
+}
 .brand__name {
   font-family: var(--display);
   font-size: clamp(1.45rem, 1.05rem + 1.15vw, 2.1rem);
@@ -413,7 +418,7 @@ strong { font-weight: 600; }
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--ink-faint);
-  margin-top: 0.34rem;
+  padding-left: 0.15rem;
 }
 
 .nav { display: flex; align-items: center; gap: clamp(1rem, 2.2vw, 1.9rem); }
@@ -528,28 +533,18 @@ strong { font-weight: 600; }
   margin-bottom: 0.9rem;
 }
 
-/* The section mark is the program's own vernacular — it reads as statute,
-   which is exactly what "know your rights" is about. */
+/* Second half of the title, not a strapline under it — so it takes the
+   headline's own measure and no ornament in front of it. The section mark
+   the program uses elsewhere still opens the pilot offer. */
 .hero__tagline {
-  display: flex;
-  align-items: baseline;
-  gap: 0.65rem;
-  max-width: 24ch;
-  margin: 0 0 1.35rem;
+  max-width: 30ch;
+  margin: 0.45rem 0 1.35rem;
   font-family: var(--display);
-  font-size: clamp(1.15rem, 1rem + 0.6vw, 1.5rem);
+  font-size: clamp(1.28rem, 1.05rem + 0.85vw, 1.8rem);
   font-weight: 400;
-  line-height: 1.32;
-  letter-spacing: -0.012em;
+  line-height: 1.28;
+  letter-spacing: -0.014em;
   color: var(--sign);
-}
-.hero__tagline::before {
-  content: "\00a7";
-  flex: none;
-  font-size: 1.15em;
-  line-height: 1;
-  color: var(--hazard-deep);
-  transform: translateY(0.06em);
 }
 .hero h1 em {
   color: var(--sign);
@@ -605,11 +600,13 @@ strong { font-weight: 600; }
   line-height: 1.15;
 }
 
-/* The programme still, shown whole — no cropping, so the full frame reads.
-   Sits at the foot of the copy column, sized to that column rather than the
-   page, so it stays inside the hero instead of pushing past the fold. */
+/* Right-hand column of the hero: the programme still sitting above the form. */
+.hero__aside { display: grid; gap: clamp(0.9rem, 1.8vw, 1.25rem); }
+
+/* Shown whole — no cropping, so the full frame reads. Sized to the aside,
+   which keeps it small next to the headline. */
 .hero__figure {
-  margin: clamp(1.6rem, 3vw, 2.2rem) 0 0;
+  margin: 0;
   max-width: 100%;
 }
 .hero__figure img {
@@ -767,6 +764,39 @@ strong { font-weight: 600; }
   max-width: none;
 }
 
+/* The photograph that closes the sequence. Wide and shallow so it reads as a
+   band under the track rather than competing with it. */
+.anatomy__figure {
+  margin: clamp(1.8rem, 3.5vw, 2.8rem) 0 0;
+  max-width: 100%;
+}
+.anatomy__figure img {
+  display: block;
+  width: 100%;
+  height: clamp(230px, 34vw, 420px);
+  object-fit: cover;
+  object-position: 50% 42%;
+  border-radius: 10px;
+  border: 1px solid var(--mist);
+  box-shadow: var(--shadow-card);
+}
+.anatomy__figure figcaption {
+  position: relative;
+  margin-top: 0.9rem;
+  padding-left: 0.95rem;
+  font-size: var(--step--1);
+  line-height: 1.5;
+  color: var(--ink-soft);
+  max-width: 56ch;
+}
+.anatomy__figure figcaption::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.36em;
+  width: 2px; height: 1.05em;
+  background: var(--hazard);
+}
+
 /* --- Module preview (home) ----------------------------------------------- */
 /* Not boxes — four columns hanging off one rule, so the row reads as a
    sequence rather than four separate tiles. */
@@ -790,6 +820,24 @@ strong { font-weight: 600; }
 .module-preview:hover { border-color: var(--sign); }
 .module-preview:hover::before { height: 22px; }
 .module-preview:hover h3 { color: var(--sign); }
+
+/* Sits below the rule, not above it, so the row still reads left to right as
+   one sequence hanging off a single line. */
+.module-preview__pic {
+  display: block;
+  aspect-ratio: 4 / 3;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--ink);
+}
+.module-preview__pic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.45s ease;
+}
+.module-preview:hover .module-preview__pic img { transform: scale(1.035); }
 
 .module-preview__num {
   display: block;
@@ -863,15 +911,35 @@ strong { font-weight: 600; }
   min-height: 260px;
   padding: clamp(1.8rem, 4vw, 2.6rem);
   background: var(--sign);
-  /* The tick motif again, this time as a quiet texture behind the seal. */
+  isolation: isolate;
+}
+/* A real session behind the seal. The green wash keeps the seal legible over
+   whatever the photograph is doing underneath it. */
+.pilot__photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 40%;
+  z-index: -1;
+}
+.pilot__badge::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(200deg, rgba(11, 91, 69, 0.58), rgba(7, 40, 32, 0.82));
+  /* The tick motif again, this time over the photograph. */
   background-image:
-    repeating-linear-gradient(to right, rgba(255,255,255,0.09) 0 2px, transparent 2px 18px);
-  background-size: 100% 100%;
+    repeating-linear-gradient(to right, rgba(255,255,255,0.07) 0 2px, transparent 2px 18px),
+    linear-gradient(200deg, rgba(11, 91, 69, 0.58), rgba(7, 40, 32, 0.82));
+  z-index: -1;
 }
 .pilot__seal {
+  position: relative;
   width: clamp(132px, 16vw, 178px);
   height: auto;
-  filter: drop-shadow(0 6px 20px rgba(7, 62, 48, 0.5));
+  filter: drop-shadow(0 8px 26px rgba(4, 26, 20, 0.7));
 }
 
 .pilot__body { padding: clamp(1.6rem, 3vw, 2.4rem) clamp(1.6rem, 3vw, 2.4rem) clamp(1.6rem, 3vw, 2.4rem) 0; }
@@ -1026,6 +1094,26 @@ html[data-gate="open"] .gate { display: none; }
   background: var(--ink);
 }
 .module__pic img { width: 100%; height: 100%; object-fit: cover; }
+
+/* A second frame inside a module, for the ground the head picture can't cover. */
+.module__still {
+  margin: 1.3rem 0 0;
+}
+.module__still img {
+  display: block;
+  width: 100%;
+  height: clamp(170px, 22vw, 250px);
+  object-fit: cover;
+  object-position: 50% 38%;
+  border-radius: var(--radius);
+  border: 1px solid var(--mist);
+}
+.module__still figcaption {
+  margin-top: 0.65rem;
+  font-size: var(--step--1);
+  line-height: 1.5;
+  color: var(--ink-faint);
+}
 
 .module__num {
   font-family: var(--mono);

@@ -131,6 +131,62 @@
   });
 
 
+  /* --- Preview video ------------------------------------------------------
+     Two jobs, both on the home page only:
+
+     1. Turn YouTube's own caption track off. The film already carries burned-in
+        captions, so leaving YouTube's on shows every line twice. The
+        cc_load_policy=0 parameter on the embed asks for this; unloading the
+        module here also covers visitors whose YouTube account forces captions
+        on for every video, which the parameter alone can't override.
+
+     2. Send the viewer to the contact form the moment the video ends, so the
+        next step is in front of them rather than somewhere further down.
+
+     Requires enablejsapi=1 on the iframe src. If the API script is blocked the
+     video still plays as an ordinary embed — nothing else depends on this.  */
+  var VIDEO_ENDED = 0;                     // YT.PlayerState.ENDED
+  var AFTER_VIDEO = 'contact.html#message';
+
+  var previewVideo = document.getElementById('preview-video');
+
+  if (previewVideo) {
+    var api = document.createElement('script');
+    api.src = 'https://www.youtube.com/iframe_api';
+    document.head.appendChild(api);
+
+    // The API calls this by name once it has loaded.
+    window.onYouTubeIframeAPIReady = function () {
+      new window.YT.Player(previewVideo, {
+        events: {
+          onReady: function (event) {
+            try {
+              event.target.unloadModule('captions');   // HTML5 player
+              event.target.unloadModule('cc');         // older player
+            } catch (e) {}
+          },
+          onStateChange: function (event) {
+            if (event.data === VIDEO_ENDED) {
+              window.location.href = AFTER_VIDEO;
+            }
+          }
+        }
+      });
+    };
+  }
+
+
+  /* --- Arriving at a form ------------------------------------------------
+     Someone sent here by the end of the video lands on the form itself, so
+     put the cursor in the first field rather than making them find it.     */
+  if (window.location.hash === '#message' && !reduced) {
+    window.addEventListener('load', function () {
+      var first = document.querySelector('#message input, #message textarea');
+      if (first) first.focus({ preventScroll: true });
+    });
+  }
+
+
   /* --- Footer year -------------------------------------------------------- */
   document.querySelectorAll('.js-year').forEach(function (el) {
     el.textContent = new Date().getFullYear();

@@ -11,7 +11,7 @@
 <meta property="og:description" content="Know Your Rights — building trust between the community and law enforcement.">
 <meta property="og:type" content="website">
 
-<link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/mark.svg" type="image/svg+xml">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,13 +26,12 @@
 <header class="site-header">
   <div class="shell header__inner">
 
-    <!-- LOGO SLOT: replace assets/img/logo.svg with the client's file. -->
+    <!-- LOGO: client wordmark lockup. assets/img/logo.png for light grounds,
+         assets/img/logo-light.png is the same artwork knocked out white. -->
     <a class="brand" href="index.html">
-      <img class="brand__mark" src="assets/img/logo.svg" alt="" width="68" height="68">
-      <span class="brand__text">
-        <span class="brand__name">Traffic Stop Bootcamp</span>
-        <span class="brand__org">Journey 2 Justice Learning</span>
-      </span>
+      <img class="brand__lockup" src="assets/img/logo.png"
+           alt="Traffic Stop Bootcamp" width="1100" height="406">
+      <span class="brand__org">Journey 2 Justice Learning</span>
     </a>
 
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Menu">
@@ -65,12 +64,12 @@
 
       <div class="hero__lead">
         <p class="eyebrow">A program of Journey 2 Justice Learning</p>
-        <h1>Know Your Rights!</h1>
-        <p class="hero__tagline">Building trust between the community and law enforcement.</p>
+        <h1>The Traffic Stop Bootcamp:</h1>
+        <p class="hero__tagline">Building a Bridge between Your Community and Law Enforcement.</p>
         <p class="lede">
           A four-module video course that prepares drivers to handle a traffic stop calmly —
           what to do, what to say, and what the law allows — so the encounter ends safely for
-          everyone in it.
+          everyone.
         </p>
 
         <div class="hero__actions">
@@ -92,15 +91,17 @@
             <dd>Complimentary</dd>
           </div>
         </dl>
-
-        <figure class="hero__figure">
-          <img src="assets/img/de-escalation.jpg" width="1280" height="689"
-               alt="A driver stays calm and keeps still as police lights fill the car during a night-time traffic stop — a still from the de-escalation module.">
-        </figure>
       </div>
 
-      <!-- Lead form. Endpoint is configured once, in assets/js/site.js -->
-      <div class="lead-card">
+      <div class="hero__aside">
+
+        <figure class="hero__figure">
+          <img src="assets/img/de-escalation.jpg" width="1400" height="931"
+               alt="A driver stays calm and keeps his hands visible as police lights fill the car during a night-time traffic stop.">
+        </figure>
+
+        <!-- Lead form. Endpoint is configured once, in assets/js/site.js -->
+        <div class="lead-card">
         <div class="lead-card__head">
           <div>
             <h2>Request program access</h2>
@@ -129,8 +130,8 @@
           </div>
 
           <div class="field">
-            <label for="lead-role">Your role</label>
-            <select id="lead-role" name="role" required>
+            <label for="lead-role">Type of Organization</label>
+            <select id="lead-role" name="organization_type" required>
               <option value="">Select one</option>
               <option>Civil rights organization</option>
               <option>Youth mentoring group</option>
@@ -145,6 +146,8 @@
           <p class="form-status js-status" role="status" aria-live="polite"></p>
           <p class="form-note">Goes to David@TSBootcamp.com. Replies within two business days.</p>
         </form>
+        </div>
+
       </div>
 
     </div>
@@ -165,8 +168,11 @@
       <div class="video-shell reveal">
         <div class="sign-frame">
           <div class="video-well">
-            <iframe
-              src="https://www.youtube-nocookie.com/embed/TdifiG6M3fw?rel=0"
+            <!-- cc_load_policy=0 leaves YouTube's caption track off, so only the
+                 captions burned into the film itself show. enablejsapi=1 lets
+                 assets/js/site.js send the viewer to the contact form on ENDED. -->
+            <iframe id="preview-video"
+              src="https://www.youtube-nocookie.com/embed/0hLbRYU_4K4?rel=0&amp;cc_load_policy=0&amp;enablejsapi=1"
               title="Traffic Stop Bootcamp — program preview"
               loading="lazy" allowfullscreen
               allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
@@ -231,6 +237,13 @@
         </div>
 
       </div>
+
+      <!-- PICTURE SLOT — the stop itself, under the sequence that describes it. -->
+      <figure class="anatomy__figure reveal">
+        <img src="assets/img/anatomy.jpg" width="1600" height="1068" loading="lazy"
+             alt="An officer stands at the driver's window writing on a clipboard while the driver waits, hands in view.">
+        <figcaption>Every one of those moments happens in the few feet between a window and a shoulder.</figcaption>
+      </figure>
     </div>
   </section>
 
@@ -250,24 +263,36 @@
       <div class="grid grid--4 reveal">
 
         <a class="module-preview" href="modules.html">
+          <span class="module-preview__pic">
+            <img src="assets/img/module-1.jpg" alt="A driver speaks calmly with an officer beside a patrol car." width="640" height="480" loading="lazy">
+          </span>
           <span class="module-preview__num">Module 01</span>
           <h3>The Ideal Traffic Stop</h3>
           <p>The five actions that build trust in the first moments of a stop.</p>
         </a>
 
         <a class="module-preview" href="modules.html">
+          <span class="module-preview__pic">
+            <img src="assets/img/module-2.jpg" alt="A seated driver hands his licence through the window to an officer." width="640" height="480" loading="lazy">
+          </span>
           <span class="module-preview__num">Module 02</span>
           <h3>Communication Skills</h3>
           <p>Tone, word choice, and answering questions without escalating.</p>
         </a>
 
         <a class="module-preview" href="modules.html">
+          <span class="module-preview__pic">
+            <img src="assets/img/module-3.jpg" alt="A driver leans out of his window mid-argument, pointing angrily." width="640" height="480" loading="lazy">
+          </span>
           <span class="module-preview__num">Module 03</span>
           <h3>Diffusing a High-Tension Situation</h3>
           <p>Triggers, “contempt of cop,” and a three-step way to bring it down.</p>
         </a>
 
         <a class="module-preview" href="modules.html">
+          <span class="module-preview__pic">
+            <img src="assets/img/module-4.jpg" alt="An officer searches the front seat of a stopped car." width="640" height="480" loading="lazy">
+          </span>
           <span class="module-preview__num">Module 04</span>
           <h3>Replying to a Request to Search</h3>
           <p>Consent, warrants, what to say if arrested, and ending the stop.</p>
@@ -289,6 +314,9 @@
       <div class="pilot reveal">
 
         <div class="pilot__badge">
+          <!-- PICTURE SLOT — a real session, with the seal riding over it. -->
+          <img class="pilot__photo" src="assets/img/workshop.jpg" width="1400" height="927" loading="lazy"
+               alt="A facilitator presents a Traffic Stop Bootcamp slide to a seated group in a community room.">
           <img class="pilot__seal" src="assets/img/pilot-seal.svg" width="178" height="178"
                alt="Complimentary pilot session — no cost">
         </div>
