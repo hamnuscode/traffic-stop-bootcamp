@@ -22,15 +22,30 @@ assets/img/          Logo lockup, module stills, anatomy + workshop photos, pilo
 Everything below is marked with a comment in the code so it's easy to find.
 
 ### 1. Logo — done
-`assets/img/logo.png` is the Journey 2 Justice Learning mark, with "Traffic Stop Bootcamp"
-set in type beside it in the header. It was supplied as a low-resolution image with the
-client's email and phone burned in underneath; those lines were cropped off and the type
-lifted so "LEARNING" survives at header size. **If the original vector ever turns up, drop
-it in — this is a 680px raster and it will not enlarge.**
+`assets/img/logo.svg` is the Traffic Stop Bootcamp wordmark, drawn to sit in the same
+family as the client's Journey 2 Justice Learning mark: a black tile, one large condensed
+line, and a thin tracked word held between two rules.
 
-`assets/img/mark.svg` is the favicon, built from the mark's centre device.
-`assets/img/logo-traffic-light.png` is the earlier traffic-light lockup, kept in case it
-is wanted back.
+| File | Use |
+|---|---|
+| `logo.svg` | Primary lockup — the site header, and anywhere wide |
+| `logo-stacked.svg` | Square alternate — social avatars, slides |
+| `mark.svg` | Favicon — reduces to TSB, which is all that survives 16px |
+| `logo-j2j.png` | The parent Journey 2 Justice Learning mark, as supplied |
+| `logo-traffic-light.png` | The earlier traffic-light lockup, superseded |
+
+**These are real vectors.** The lettering is converted to outlines, so the files render
+anywhere without the font being installed, and they enlarge cleanly for print.
+
+To change the wordmark, edit `assets/img/logo-source/build-logo.py` and re-run it:
+
+```bash
+pip3 install fonttools
+python3 assets/img/logo-source/build-logo.py
+```
+
+It regenerates all three SVGs. The typeface is Avenir Next Condensed, which ships with
+macOS — on another machine, point `TTC` at a condensed grotesque of your own.
 
 ### 2. Videos — done
 All five are live as `youtube-nocookie` embeds, lazy-loaded.

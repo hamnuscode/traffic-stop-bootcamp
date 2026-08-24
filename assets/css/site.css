@@ -391,22 +391,21 @@ strong { font-weight: 600; }
   padding-block: 0.8rem;
 }
 
-/* Logo slot — the Journey 2 Justice mark, with the program name set beside
-   it. The mark is a solid black tile, so it is sized by height to sit level
-   with the type rather than by width. */
+/* Logo slot — the wordmark carries the program name, so the only type set
+   here is the parent organisation under it. The lockup is a solid black tile
+   sized by width, which is the dimension a page header has to spare. */
 .brand {
   display: inline-flex;
-  align-items: center;
-  gap: clamp(0.75rem, 1.3vw, 1.1rem);
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4rem;
   text-decoration: none;
   color: var(--ink);
 }
-.brand__mark {
+.brand__lockup {
   display: block;
-  width: auto;
-  height: clamp(54px, 5.4vw, 74px);
-  flex: none;
-  border-radius: 3px;
+  width: clamp(176px, 19vw, 232px);
+  height: auto;
 }
 .brand__name {
   font-family: var(--display);
