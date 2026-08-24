@@ -346,6 +346,7 @@ strong { font-weight: 600; }
 }
 
 .grid { display: grid; gap: clamp(1rem, 2vw, 1.6rem); }
+.grid--2 { grid-template-columns: repeat(2, 1fr); }
 .grid--3 { grid-template-columns: repeat(3, 1fr); }
 .grid--4 { grid-template-columns: repeat(4, 1fr); }
 
@@ -390,20 +391,22 @@ strong { font-weight: 600; }
   padding-block: 0.8rem;
 }
 
-/* Logo slot — the client's wordmark lockup carries the name itself, so the
-   only type set here is the parent organisation underneath it. */
+/* Logo slot — the Journey 2 Justice mark, with the program name set beside
+   it. The mark is a solid black tile, so it is sized by height to sit level
+   with the type rather than by width. */
 .brand {
   display: inline-flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.34rem;
+  align-items: center;
+  gap: clamp(0.75rem, 1.3vw, 1.1rem);
   text-decoration: none;
   color: var(--ink);
 }
-.brand__lockup {
+.brand__mark {
   display: block;
-  width: clamp(186px, 20vw, 266px);
-  height: auto;
+  width: auto;
+  height: clamp(54px, 5.4vw, 74px);
+  flex: none;
+  border-radius: 3px;
 }
 .brand__name {
   font-family: var(--display);
@@ -520,7 +523,9 @@ strong { font-weight: 600; }
   display: grid;
   grid-template-columns: minmax(0, 1.12fr) minmax(340px, 0.88fr);
   gap: clamp(2rem, 4vw, 3.5rem);
-  align-items: center;
+  /* Top-aligned, so the headline starts level with the photograph beside it
+     instead of being pushed down the page by the taller form column. */
+  align-items: start;
 }
 
 /* No max-width here — the grid track is the measure. Capping the copy
@@ -763,6 +768,31 @@ strong { font-weight: 600; }
   margin: 0;
   max-width: none;
 }
+
+/* Where the title says what the eyebrow would have said, the tick moves onto
+   the title and the sub-line carries the promise underneath it. */
+.head--ticked {
+  position: relative;
+  padding-top: 1.15rem;
+}
+.head--ticked::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 26px; height: 2px;
+  background: var(--hazard);
+}
+.head__sub {
+  margin: 0.5rem 0 0;
+  font-family: var(--display);
+  font-size: clamp(1.1rem, 0.98rem + 0.42vw, 1.4rem);
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: -0.01em;
+  color: var(--sign);
+  max-width: none;
+}
+.section__head .head__sub + .lede { margin-top: 0.85rem; }
 
 /* The photograph that closes the sequence. Wide and shallow so it reads as a
    band under the track rather than competing with it. */
@@ -1013,14 +1043,26 @@ strong { font-weight: 600; }
 
 
 /* --- Modules page: gate -------------------------------------------------- */
-.gate {
-  min-height: 74vh;
+/* --- Modules page: descriptions and the gate, side by side ---------------
+   The four modules are described in the open; the password only stands in
+   front of the videos. The card rides alongside the descriptions rather than
+   blocking the page, and follows the reader down on a tall screen. */
+.modules-intro__grid {
   display: grid;
-  place-items: center;
-  padding-block: clamp(3rem, 8vw, 6rem);
+  grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: start;
+}
+.modules-intro__lead .section__head { margin-bottom: clamp(1.6rem, 3vw, 2.2rem); }
+.modules-intro__lead h1 { font-size: var(--step-3); }
+.modules-intro__cards { row-gap: clamp(1.6rem, 3vw, 2.2rem); }
+
+.gate {
+  position: sticky;
+  top: clamp(1.2rem, 3vw, 2rem);
 }
 .gate__card {
-  width: min(100%, 460px);
+  width: 100%;
   background: var(--white);
   border: 1px solid var(--mist);
   border-top: 4px solid var(--sign);
@@ -1061,6 +1103,9 @@ strong { font-weight: 600; }
 /* Set by an inline script in modules.html so a returning, already-unlocked
    visitor never sees the gate flash before the script runs. */
 html[data-gate="open"] .gate { display: none; }
+/* With the card gone the descriptions take the full measure. */
+html[data-gate="open"] .modules-intro__grid { grid-template-columns: minmax(0, 1fr); }
+html[data-gate="open"] .modules-intro__cards { grid-template-columns: repeat(4, 1fr); }
 
 /* --- Modules page: one row per module ------------------------------------ */
 .module {
@@ -1260,7 +1305,12 @@ html[data-gate="open"] .gate { display: none; }
 @media (max-width: 940px) {
   .hero__grid,
   .contact__grid,
+  .modules-intro__grid,
   .module { grid-template-columns: 1fr; }
+
+  /* Stacked, the card is just another block — nothing to stick to. */
+  .gate { position: static; }
+  html[data-gate="open"] .modules-intro__cards { grid-template-columns: repeat(2, 1fr); }
 
   .module { gap: 1.6rem; }
   .module:nth-child(even) .module__body { order: 0; }
@@ -1310,7 +1360,8 @@ html[data-gate="open"] .gate { display: none; }
     border-top: 2px solid var(--ink);
     padding: 1.5rem 0 1.3rem;
   }
-  .grid--3, .grid--4 { grid-template-columns: 1fr; }
+  .grid--2, .grid--3, .grid--4 { grid-template-columns: 1fr; }
+  html[data-gate="open"] .modules-intro__cards { grid-template-columns: 1fr; }
 
   .module__head { align-items: flex-start; }
   .module__pic { width: 84px; }

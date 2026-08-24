@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Training Modules — Traffic Stop Bootcamp</title>
-<meta name="description" content="The four Traffic Stop Bootcamp training modules. Password required.">
+<meta name="description" content="The four Traffic Stop Bootcamp training modules — what each one covers. The videos are open to enrolled partners.">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#0B5B45">
 
@@ -34,9 +34,9 @@
   <div class="shell header__inner">
 
     <a class="brand" href="index.html">
-      <img class="brand__lockup" src="assets/img/logo.png"
-           alt="Traffic Stop Bootcamp" width="1100" height="406">
-      <span class="brand__org">Journey 2 Justice Learning</span>
+      <img class="brand__mark" src="assets/img/logo.png"
+           alt="Journey 2 Justice Learning" width="680" height="507">
+      <span class="brand__name">Traffic Stop Bootcamp</span>
     </a>
 
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Menu">
@@ -63,35 +63,96 @@
 
 <main id="main">
 
-  <!-- ===================== PASSWORD GATE ===================== -->
-  <section class="gate" id="gate">
-    <div class="shell" style="display:grid;justify-items:center">
-      <div class="gate__card">
+  <!-- ===================== OVERVIEW + PASSWORD GATE =====================
+       The four modules are described in the open; only the videos are behind
+       the password. The gate card sits beside the descriptions rather than
+       standing in front of them. -->
+  <section class="section modules-intro">
+    <div class="shell">
+      <div class="modules-intro__grid">
 
-        <span class="gate__lock" aria-hidden="true">
-          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7">
-            <rect x="3" y="8.5" width="14" height="9.5" rx="2"/>
-            <path d="M6.5 8.5V6a3.5 3.5 0 017 0v2.5"/>
-            <circle cx="10" cy="13" r="1.2" fill="currentColor" stroke="none"/>
-          </svg>
-        </span>
-
-        <h1>Training modules</h1>
-        <p>This library is open to enrolled partners. Enter the password from your welcome email to continue.</p>
-
-        <form id="gate-form" novalidate>
-          <div class="field">
-            <label for="gate-password">Password</label>
-            <input id="gate-password" type="password" autocomplete="current-password" required autofocus>
+        <div class="modules-intro__lead">
+          <div class="section__head">
+            <p class="eyebrow">Training modules</p>
+            <h1>Four modules.</h1>
+            <p class="lede">
+              Each module is a short video with a facilitator prompt, built to run inside a
+              single class period. The full library is password-protected for enrolled partners.
+            </p>
           </div>
-          <button class="btn btn--primary btn--block" type="submit">Unlock modules</button>
-          <p class="gate__error" id="gate-error" role="alert"></p>
-        </form>
 
-        <p class="gate__help">
-          Don't have it yet? <a href="contact.html">Request access</a> and we'll send the
-          password along with scheduling options.
-        </p>
+          <div class="grid grid--2 modules-intro__cards">
+
+            <a class="module-preview" href="#module-01">
+              <span class="module-preview__pic">
+                <img src="assets/img/module-1.jpg" alt="A driver speaks calmly with an officer beside a patrol car." width="640" height="480" loading="lazy">
+              </span>
+              <span class="module-preview__num">Module 01</span>
+              <h3>The Ideal Traffic Stop</h3>
+              <p>The five actions that build trust in the first moments of a stop.</p>
+            </a>
+
+            <a class="module-preview" href="#module-02">
+              <span class="module-preview__pic">
+                <img src="assets/img/module-2.jpg" alt="A seated driver hands his licence through the window to an officer." width="640" height="480" loading="lazy">
+              </span>
+              <span class="module-preview__num">Module 02</span>
+              <h3>Communication Skills</h3>
+              <p>Tone, word choice, and answering questions without escalating.</p>
+            </a>
+
+            <a class="module-preview" href="#module-03">
+              <span class="module-preview__pic">
+                <img src="assets/img/module-3.jpg" alt="A driver leans out of his window mid-argument, pointing angrily." width="640" height="480" loading="lazy">
+              </span>
+              <span class="module-preview__num">Module 03</span>
+              <h3>Diffusing a High-Tension Situation</h3>
+              <p>Triggers, “contempt of cop,” and a three-step way to bring it down.</p>
+            </a>
+
+            <a class="module-preview" href="#module-04">
+              <span class="module-preview__pic">
+                <img src="assets/img/module-4.jpg" alt="An officer searches the front seat of a stopped car." width="640" height="480" loading="lazy">
+              </span>
+              <span class="module-preview__num">Module 04</span>
+              <h3>Replying to a Request to Search</h3>
+              <p>Consent, warrants, what to say if arrested, and ending the stop.</p>
+            </a>
+
+          </div>
+        </div>
+
+        <!-- Hidden by gate.js once the password is accepted. -->
+        <aside class="gate" id="gate">
+          <div class="gate__card">
+
+            <span class="gate__lock" aria-hidden="true">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7">
+                <rect x="3" y="8.5" width="14" height="9.5" rx="2"/>
+                <path d="M6.5 8.5V6a3.5 3.5 0 017 0v2.5"/>
+                <circle cx="10" cy="13" r="1.2" fill="currentColor" stroke="none"/>
+              </svg>
+            </span>
+
+            <h2>Watch the modules</h2>
+            <p>The videos are open to enrolled partners. Enter the password from your welcome email to unlock all four.</p>
+
+            <form id="gate-form" novalidate>
+              <div class="field">
+                <label for="gate-password">Password</label>
+                <input id="gate-password" type="password" autocomplete="current-password" required>
+              </div>
+              <button class="btn btn--primary btn--block" type="submit">Unlock modules</button>
+              <p class="gate__error" id="gate-error" role="alert"></p>
+            </form>
+
+            <p class="gate__help">
+              Don't have it yet? <a href="contact.html">Request access</a> and we'll send the
+              password along with scheduling options.
+            </p>
+
+          </div>
+        </aside>
 
       </div>
     </div>
@@ -103,7 +164,7 @@
     <section class="section section--tight">
       <div class="shell">
         <div class="section__head">
-          <p class="eyebrow">Four modules · Watch in order</p>
+          <p class="eyebrow">Unlocked · Watch in order</p>
           <h2>The program, module by module.</h2>
           <p class="lede">
             Watch straight through the first time, in order — each module builds on the one
@@ -116,7 +177,7 @@
     <section class="section" style="padding-top:0">
       <div class="shell">
 
-        <article class="module reveal">
+        <article class="module reveal" id="module-01">
           <div class="module__body">
             <div class="module__head">
               <!-- PICTURE SLOT — swap the src for a different still. -->
@@ -147,7 +208,7 @@
           </div>
         </article>
 
-        <article class="module reveal">
+        <article class="module reveal" id="module-02">
           <div class="module__body">
             <div class="module__head">
               <!-- PICTURE SLOT — swap the src for a different still. -->
@@ -178,7 +239,7 @@
           </div>
         </article>
 
-        <article class="module reveal">
+        <article class="module reveal" id="module-03">
           <div class="module__body">
             <div class="module__head">
               <!-- PICTURE SLOT — swap the src for a different still. -->
@@ -209,7 +270,7 @@
           </div>
         </article>
 
-        <article class="module reveal">
+        <article class="module reveal" id="module-04">
           <div class="module__body">
             <div class="module__head">
               <!-- PICTURE SLOT — swap the src for a different still. -->

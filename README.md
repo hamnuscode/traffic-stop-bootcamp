@@ -5,8 +5,8 @@ Marketing and training site for **Traffic Stop Bootcamp**, a program of Journey 
 Hand-coded static site — three HTML pages, one stylesheet, two small scripts. No WordPress, no page builder, no build step. Open `index.html` in a browser and it runs.
 
 ```
-index.html          Home — catch line + lead form, highlights video, anatomy of a stop, modules, audiences
-modules.html        Training modules — password-protected, one row per module
+index.html          Home — catch line + lead form, highlights video, anatomy of a stop, pilot, audiences
+modules.html        Module overview + password gate, then one row per module once unlocked
 contact.html        Contact details + message form
 assets/css/site.css All styling. Tokens are at the top.
 assets/js/site.js   Nav, scroll reveal, form submission. FORM_ENDPOINT lives here.
@@ -22,13 +22,15 @@ assets/img/          Logo lockup, module stills, anatomy + workshop photos, pilo
 Everything below is marked with a comment in the code so it's easy to find.
 
 ### 1. Logo — done
-The client's wordmark lockup is `assets/img/logo.png`, drawn in `--ink` on a transparent
-ground so it sits on the light header. `assets/img/logo-light.png` is the same artwork
-knocked out white, for a dark ground. The lockup carries the name itself, so the header
-sets only "Journey 2 Justice Learning" underneath it.
+`assets/img/logo.png` is the Journey 2 Justice Learning mark, with "Traffic Stop Bootcamp"
+set in type beside it in the header. It was supplied as a low-resolution image with the
+client's email and phone burned in underneath; those lines were cropped off and the type
+lifted so "LEARNING" survives at header size. **If the original vector ever turns up, drop
+it in — this is a 680px raster and it will not enlarge.**
 
-`assets/img/mark.svg` is the compact favicon — the lockup's three lights, stacked so they
-stay legible at 16px.
+`assets/img/mark.svg` is the favicon, built from the mark's centre device.
+`assets/img/logo-traffic-light.png` is the earlier traffic-light lockup, kept in case it
+is wanted back.
 
 ### 2. Videos — done
 All five are live as `youtube-nocookie` embeds, lazy-loaded.
@@ -56,7 +58,17 @@ The home page preview carries two extra parameters and an `id`:
 
 **Worth knowing:** the module videos are public on YouTube, so the site's password gate hides the *page*, not the videos. Setting them to Unlisted in YouTube Studio would close that gap without touching the site.
 
-### 3. Module descriptions and pictures — done
+### 3. Where the modules live
+The module overview — the four cards with their descriptions — sits on **modules.html**,
+not the home page, and it is public. Only the videos are behind the password: the gate card
+sits beside the descriptions, and unlocking swaps in the full rows below. The overview cards
+link down to their own rows once unlocked.
+
+`modules.html` is still `noindex`. That was set when the whole page was gated; now that the
+descriptions are public, dropping the tag would let them be found in search. Left as-is —
+it is a call for the client to make.
+
+### 4. Module descriptions and pictures — done
 Descriptions are the client's own text, used as supplied. Icons are gone; every module
 carries a photograph in a `PICTURE SLOT`, on both the home page cards and the modules page.
 Swap any `<img src>` in `assets/img/` to change one.
@@ -72,7 +84,7 @@ Swap any `<img src>` in `assets/img/` to change one.
 | `module-arrest.jpg` | Module 04, second frame | An arrest — the closing section of that module |
 | `workshop.jpg` | Home, pilot workshop | A live session, with the pilot seal over it |
 
-### 4. Modules password
+### 5. Modules password
 Default password is **`bootcamp2026`** — change it before launch.
 
 ```bash
@@ -83,7 +95,7 @@ Paste the hex string into `PASSWORD_HASH` at the top of `assets/js/gate.js`. The
 
 **What this gate is:** a front-end lock that keeps the page out of casual reach and out of search results (`noindex` is set). **What it is not:** server-side security. If real access control is needed, either turn on HTTP Basic Auth at the host or use unlisted Vimeo URLs — both are noted in the comments at the top of `gate.js`.
 
-### 5. Form delivery
+### 6. Form delivery
 Both forms post to FormSubmit, which relays to `David@TSBootcamp.com`. It needs one activation step:
 
 1. Deploy the site.
@@ -93,7 +105,7 @@ Both forms post to FormSubmit, which relays to `David@TSBootcamp.com`. It needs 
 
 To use a different service, change the single `FORM_ENDPOINT` string at the top of `assets/js/site.js`. If a submission ever fails, the form shows the direct email address rather than a dead end.
 
-### 6. Contact details — done
+### 7. Contact details — done
 David Klepinger, Managing Partner, David@TSBootcamp.com, 770 656-1486. No physical address anywhere on the site, by request.
 
 ---

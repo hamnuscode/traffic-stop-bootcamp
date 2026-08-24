@@ -1,11 +1,15 @@
 <!--
-  Favicon / compact mark. The lockup's three lights, stacked so they stay
-  legible at 16px where a horizontal row would smear together.
-  The full wordmark lockup lives in logo.png (logo-light.png on dark grounds).
+  Favicon. The centre device of the Journey 2 Justice mark — the rules and the
+  2 — which is the part of the logo that still reads at 16px.
+  The full mark is logo.png; logo-traffic-light.png is the earlier lockup.
 -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Traffic Stop Bootcamp">
-  <rect width="64" height="64" rx="10" fill="#0E1C24"/>
-  <circle cx="32" cy="18" r="9.5" fill="#E4595A"/>
-  <circle cx="32" cy="32" r="9.5" fill="#F2B95C"/>
-  <circle cx="32" cy="46" r="9.5" fill="#8FD05A"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Journey 2 Justice Learning">
+  <rect width="64" height="64" rx="8" fill="#000000"/>
+  <rect x="9" y="21" width="15" height="2.4" fill="#FFFFFF"/>
+  <rect x="40" y="21" width="15" height="2.4" fill="#FFFFFF"/>
+  <rect x="9" y="40.6" width="15" height="2.4" fill="#FFFFFF"/>
+  <rect x="40" y="40.6" width="15" height="2.4" fill="#FFFFFF"/>
+  <text x="32" y="41" text-anchor="middle" fill="#FFFFFF"
+        font-family="Helvetica Neue, Helvetica, Arial, sans-serif"
+        font-size="30" font-weight="500" letter-spacing="-0.5">2</text>
 </svg>
