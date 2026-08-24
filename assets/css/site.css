@@ -404,7 +404,7 @@ strong { font-weight: 600; }
 }
 .brand__lockup {
   display: block;
-  width: clamp(176px, 19vw, 232px);
+  width: clamp(128px, 13vw, 168px);
   height: auto;
 }
 .brand__name {
