@@ -809,22 +809,6 @@ strong { font-weight: 600; }
   border: 1px solid var(--mist);
   box-shadow: var(--shadow-card);
 }
-.anatomy__figure figcaption {
-  position: relative;
-  margin-top: 0.9rem;
-  padding-left: 0.95rem;
-  font-size: var(--step--1);
-  line-height: 1.5;
-  color: var(--ink-soft);
-  max-width: 56ch;
-}
-.anatomy__figure figcaption::before {
-  content: "";
-  position: absolute;
-  left: 0; top: 0.36em;
-  width: 2px; height: 1.05em;
-  background: var(--hazard);
-}
 
 /* --- Module preview (home) ----------------------------------------------- */
 /* Not boxes — four columns hanging off one rule, so the row reads as a
